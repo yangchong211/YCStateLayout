@@ -28,3 +28,9 @@
   	* 倘若有些页面想定制状态布局，也可以自由实现，很简单
 
 4.实现效果
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/125771775308836257.png)
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/407442243542773132.jpg)
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/54463227589674008.png)
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/739964693513198374.jpg)
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/75707536091894445.jpg)
+
