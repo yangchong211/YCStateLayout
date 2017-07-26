@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_contents"
+        android:orderInCategory="100"
+        android:title="正常展示数据" />
+    <item
+        android:id="@+id/action_loading"
+        android:orderInCategory="100"
+        android:title="加载数据中" />
+    <item
+        android:id="@+id/action_error"
+        android:orderInCategory="100"
+        android:title="加载错误" />
+    <item
+        android:id="@+id/action_networkError"
+        android:orderInCategory="100"
+        android:title="没有网络" />
+    <item
+        android:id="@+id/action_emptyData"
+        android:orderInCategory="100"
+        android:title="加载没有数据" />
+
+
+</menu>
