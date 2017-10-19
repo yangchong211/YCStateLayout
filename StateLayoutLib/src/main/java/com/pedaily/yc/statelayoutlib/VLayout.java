@@ -15,7 +15,7 @@ import android.view.ViewStub;
  * 修订历史：
  * ================================================
  */
-public abstract class AbsLayout {
+public abstract class VLayout {
 
     protected ViewStub mLayoutVs;
 

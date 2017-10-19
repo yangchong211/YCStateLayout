@@ -54,10 +54,12 @@ public class RootFrameLayout extends FrameLayout {
      */
     private SparseArray<View> layoutSparseArray = new SparseArray();
 
+    //private HashMap<Integer,View> map = new HashMap<>();
+
     /**
      *  布局管理器
      */
-    private StatusLayoutManager mStatusLayoutManager;
+    private StateLayoutManager mStatusLayoutManager;
 
 
     public RootFrameLayout(Context context) {
@@ -78,7 +80,7 @@ public class RootFrameLayout extends FrameLayout {
     }
 
 
-    public void setStatusLayoutManager(StatusLayoutManager statusLayoutManager) {
+    public void setStatusLayoutManager(StateLayoutManager statusLayoutManager) {
         mStatusLayoutManager = statusLayoutManager;
 
         addAllLayoutToRootLayout();
@@ -125,30 +127,6 @@ public class RootFrameLayout extends FrameLayout {
         }
     }
 
-    private void emptyDataViewAddData(int iconImage, String textTip) {
-        if (iconImage == 0 && TextUtils.isEmpty(textTip)) return;
-        View emptyDataView = layoutSparseArray.get(LAYOUT_EMPTYDATA_ID);
-        View iconImageView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataIconImageId);
-        View textView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataTextTipId);
-        if (iconImageView != null && iconImageView instanceof ImageView) {
-            ((ImageView) iconImageView).setImageResource(iconImage);
-        }
-
-        if (textView != null && textView instanceof TextView) {
-            ((TextView) textView).setText(textTip);
-        }
-    }
-
-    public void showLayoutEmptyData(Object... objects) {
-        if (inflateLayout(LAYOUT_EMPTYDATA_ID)) {
-            showHideViewById(LAYOUT_EMPTYDATA_ID);
-
-            AbsLayout emptyDataLayout = mStatusLayoutManager.emptyDataLayout;
-            if (emptyDataLayout != null)
-                emptyDataLayout.setData(objects);
-        }
-    }
-
     /**
      *  显示网络异常
      */
@@ -167,6 +145,30 @@ public class RootFrameLayout extends FrameLayout {
         }
     }
 
+    private void emptyDataViewAddData(int iconImage, String textTip) {
+        if (iconImage == 0 && TextUtils.isEmpty(textTip)) return;
+        View emptyDataView = layoutSparseArray.get(LAYOUT_EMPTYDATA_ID);
+        View iconImageView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataIconImageId);
+        View textView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataTextTipId);
+        if (iconImageView != null && iconImageView instanceof ImageView) {
+            ((ImageView) iconImageView).setImageResource(iconImage);
+        }
+
+        if (textView != null && textView instanceof TextView) {
+            ((TextView) textView).setText(textTip);
+        }
+    }
+
+    public void showLayoutEmptyData(Object... objects) {
+        if (inflateLayout(LAYOUT_EMPTYDATA_ID)) {
+            showHideViewById(LAYOUT_EMPTYDATA_ID);
+
+            VLayout emptyDataLayout = mStatusLayoutManager.emptyDataLayout;
+            if (emptyDataLayout != null)
+                emptyDataLayout.setData(objects);
+        }
+    }
+
     private void errorViewAddData(int iconImage, String textTip) {
         if (iconImage == 0 && TextUtils.isEmpty(textTip)) return;
         View errorView = layoutSparseArray.get(LAYOUT_ERROR_ID);
@@ -181,18 +183,22 @@ public class RootFrameLayout extends FrameLayout {
         }
     }
 
+    /**
+     * 展示错误
+     * @param objects
+     */
     public void showLayoutError(Object... objects) {
         if (inflateLayout(LAYOUT_ERROR_ID)) {
             showHideViewById(LAYOUT_ERROR_ID);
 
-            AbsLayout errorLayout = mStatusLayoutManager.errorLayout;
+            VLayout errorLayout = mStatusLayoutManager.errorLayout;
             if (errorLayout != null)
                 errorLayout.setData(objects);
         }
     }
 
     /**
-     *  根据ID显示隐藏布局
+     * 根据ID显示隐藏布局
      * @param id
      */
     private void showHideViewById(int id) {
@@ -251,6 +257,7 @@ public class RootFrameLayout extends FrameLayout {
         }
         return isShow;
     }
+
 
     /**
      *  重试加载

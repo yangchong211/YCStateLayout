@@ -22,6 +22,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile project(':StateLayoutLib')
+    //compile project(':StateLayoutLib')
+    compile 'cn.yc:StateLayoutLib:1.0'
     compile 'com.android.support:recyclerview-v7:25.3.1'
 }

@@ -9,7 +9,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.pedaily.yc.statelayoutlib.StatusLayoutManager;
+
+import com.pedaily.yc.statelayoutlib.StateLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initStatusLayout() {
-        statusLayoutManager = StatusLayoutManager.newBuilder(this)
+        statusLayoutManager = StateLayoutManager.newBuilder(this)
                 .contentView(R.layout.activity_content)
                 .emptyDataView(R.layout.activity_emptydata)
                 .errorView(R.layout.activity_error)

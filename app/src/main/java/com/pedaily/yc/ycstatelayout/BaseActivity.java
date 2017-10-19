@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
-import com.pedaily.yc.statelayoutlib.StatusLayoutManager;
+import com.pedaily.yc.statelayoutlib.StateLayoutManager;
 
 
 /**
@@ -22,7 +22,7 @@ import com.pedaily.yc.statelayoutlib.StatusLayoutManager;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected StatusLayoutManager statusLayoutManager;
+    protected StateLayoutManager statusLayoutManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

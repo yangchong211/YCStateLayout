@@ -16,7 +16,7 @@ import android.view.ViewStub;
  * 修订历史：
  * ================================================
  */
-public class StatusLayoutManager {
+public class StateLayoutManager {
 
     final Context context;
     final ViewStub netWorkErrorVs;
@@ -32,14 +32,14 @@ public class StatusLayoutManager {
     final int emptyDataTextTipId;
     final int errorIconImageId;
     final int errorTextTipId;
-    final AbsLayout errorLayout;
-    final AbsLayout emptyDataLayout;
+    final VLayout errorLayout;
+    final VLayout emptyDataLayout;
 
     final RootFrameLayout rootFrameLayout;
     final OnShowHideViewListener onShowHideViewListener;
     final OnRetryListener onRetryListener;
 
-    public StatusLayoutManager(Builder builder) {
+    public StateLayoutManager(Builder builder) {
         this.context = builder.context;
         this.loadingLayoutResId = builder.loadingLayoutResId;
         this.netWorkErrorVs = builder.netWorkErrorVs;
@@ -88,10 +88,16 @@ public class StatusLayoutManager {
         rootFrameLayout.showEmptyData(iconImage, textTip);
     }
 
+    /**
+     * 显示空数据
+     */
     public void showEmptyData() {
         showEmptyData(0, "");
     }
 
+    /**
+     * 显示空数据
+     */
     public void showLayoutEmptyData(Object... objects) {
         rootFrameLayout.showLayoutEmptyData(objects);
     }
@@ -145,8 +151,8 @@ public class StatusLayoutManager {
         private int emptyDataTextTipId;
         private int errorIconImageId;
         private int errorTextTipId;
-        private AbsLayout errorLayout;
-        private AbsLayout emptyDataLayout;
+        private VLayout errorLayout;
+        private VLayout emptyDataLayout;
         private OnShowHideViewListener onShowHideViewListener;
         private OnRetryListener onRetryListener;
 
@@ -197,13 +203,13 @@ public class StatusLayoutManager {
             return this;
         }
 
-        public Builder errorLayout(AbsLayout errorLayout) {
+        public Builder errorLayout(VLayout errorLayout) {
             this.errorLayout = errorLayout;
             this.errorVs = errorLayout.getLayoutVs();
             return this;
         }
 
-        public Builder emptyDataLayout(AbsLayout emptyDataLayout) {
+        public Builder emptyDataLayout(VLayout emptyDataLayout) {
             this.emptyDataLayout = emptyDataLayout;
             this.emptyDataVs = emptyDataLayout.getLayoutVs();
             return this;
@@ -249,18 +255,28 @@ public class StatusLayoutManager {
             return this;
         }
 
+        /**
+         * 为状态View显示隐藏监听事件
+         * @param onShowHideViewListener
+         * @return
+         */
         public Builder onShowHideViewListener(OnShowHideViewListener onShowHideViewListener) {
             this.onShowHideViewListener = onShowHideViewListener;
             return this;
         }
 
+        /**
+         * 为重试加载按钮的监听事件
+         * @param onRetryListener
+         * @return
+         */
         public Builder onRetryListener(OnRetryListener onRetryListener) {
             this.onRetryListener = onRetryListener;
             return this;
         }
 
-        public StatusLayoutManager build() {
-            return new StatusLayoutManager(this);
+        public StateLayoutManager build() {
+            return new StateLayoutManager(this);
         }
     }
 
