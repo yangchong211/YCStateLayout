@@ -86,9 +86,18 @@ private void initSettingNetwork() {
 
 
 #### 5.实现效果
+
 ![](https://github.com/yangchong211/YCStateLayout/blob/master/image/125771775308836257.png)
 ![](https://github.com/yangchong211/YCStateLayout/blob/master/image/407442243542773132.jpg)
 ![](https://github.com/yangchong211/YCStateLayout/blob/master/image/54463227589674008.png)
 ![](https://github.com/yangchong211/YCStateLayout/blob/master/image/739964693513198374.jpg)
 ![](https://github.com/yangchong211/YCStateLayout/blob/master/image/75707536091894445.jpg)
+
+
+###  6.版本更新说明
+- v1.0 更新于2017年3月28日
+- v1.1 更新于2017年12月3日
+- v1.1.5 更新于2018年4月25日
+
+
 
