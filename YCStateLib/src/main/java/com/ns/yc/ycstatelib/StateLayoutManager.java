@@ -1,4 +1,4 @@
-package com.pedaily.yc.statelayoutlib;
+package com.ns.yc.ycstatelib;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -8,13 +8,13 @@ import android.view.ViewStub;
 
 
 /**
- * ================================================
- * 作    者：杨充
- * 版    本：1.0
- * 创建日期：2017/7/6
- * 描    述：
- * 修订历史：
- * ================================================
+ * <pre>
+ *     @author yangchong
+ *     blog  : https://github.com/yangchong211
+ *     time  : 2017/7/6
+ *     desc  : 状态管理器
+ *     revise:
+ * </pre>
  */
 public class StateLayoutManager {
 
@@ -32,14 +32,18 @@ public class StateLayoutManager {
     final int emptyDataTextTipId;
     final int errorIconImageId;
     final int errorTextTipId;
-    final VLayout errorLayout;
-    final VLayout emptyDataLayout;
+    final AbsViewStubLayout errorLayout;
+    final AbsViewStubLayout emptyDataLayout;
 
-    final RootFrameLayout rootFrameLayout;
+    final StateFrameLayout rootFrameLayout;
     final OnShowHideViewListener onShowHideViewListener;
     final OnRetryListener onRetryListener;
 
-    public StateLayoutManager(Builder builder) {
+    public static Builder newBuilder(Context context) {
+        return new Builder(context);
+    }
+
+    StateLayoutManager(Builder builder) {
         this.context = builder.context;
         this.loadingLayoutResId = builder.loadingLayoutResId;
         this.netWorkErrorVs = builder.netWorkErrorVs;
@@ -59,10 +63,13 @@ public class StateLayoutManager {
         this.errorLayout = builder.errorLayout;
         this.emptyDataLayout = builder.emptyDataLayout;
 
-        rootFrameLayout = new RootFrameLayout(this.context);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        //创建帧布局
+        rootFrameLayout = new StateFrameLayout(this.context);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         rootFrameLayout.setLayoutParams(layoutParams);
 
+        //设置状态管理器
         rootFrameLayout.setStatusLayoutManager(this);
     }
 
@@ -134,7 +141,6 @@ public class StateLayoutManager {
         return rootFrameLayout;
     }
 
-
     public static final class Builder {
 
         private Context context;
@@ -151,12 +157,12 @@ public class StateLayoutManager {
         private int emptyDataTextTipId;
         private int errorIconImageId;
         private int errorTextTipId;
-        private VLayout errorLayout;
-        private VLayout emptyDataLayout;
+        private AbsViewStubLayout errorLayout;
+        private AbsViewStubLayout emptyDataLayout;
         private OnShowHideViewListener onShowHideViewListener;
         private OnRetryListener onRetryListener;
 
-        public Builder(Context context) {
+        Builder(Context context) {
             this.context = context;
         }
 
@@ -203,71 +209,71 @@ public class StateLayoutManager {
             return this;
         }
 
-        public Builder errorLayout(VLayout errorLayout) {
+        public Builder errorLayout(AbsViewStubLayout errorLayout) {
             this.errorLayout = errorLayout;
             this.errorVs = errorLayout.getLayoutVs();
             return this;
         }
 
-        public Builder emptyDataLayout(VLayout emptyDataLayout) {
+        public Builder emptyDataLayout(AbsViewStubLayout emptyDataLayout) {
             this.emptyDataLayout = emptyDataLayout;
             this.emptyDataVs = emptyDataLayout.getLayoutVs();
             return this;
         }
 
-        public Builder netWorkErrorRetryViewId(int netWorkErrorRetryViewId) {
+        public Builder netWorkErrorRetryViewId(@LayoutRes int netWorkErrorRetryViewId) {
             this.netWorkErrorRetryViewId = netWorkErrorRetryViewId;
             return this;
         }
 
-        public Builder emptyDataRetryViewId(int emptyDataRetryViewId) {
+        public Builder emptyDataRetryViewId(@LayoutRes int emptyDataRetryViewId) {
             this.emptyDataRetryViewId = emptyDataRetryViewId;
             return this;
         }
 
-        public Builder errorRetryViewId(int errorRetryViewId) {
+        public Builder errorRetryViewId(@LayoutRes int errorRetryViewId) {
             this.errorRetryViewId = errorRetryViewId;
             return this;
         }
 
-        public Builder retryViewId(int retryViewId) {
+        public Builder retryViewId(@LayoutRes int retryViewId) {
             this.retryViewId = retryViewId;
             return this;
         }
 
-        public Builder emptyDataIconImageId(int emptyDataIconImageId) {
+        public Builder emptyDataIconImageId(@LayoutRes int emptyDataIconImageId) {
             this.emptyDataIconImageId = emptyDataIconImageId;
             return this;
         }
 
-        public Builder emptyDataTextTipId(int emptyDataTextTipId) {
+        public Builder emptyDataTextTipId(@LayoutRes int emptyDataTextTipId) {
             this.emptyDataTextTipId = emptyDataTextTipId;
             return this;
         }
 
-        public Builder errorIconImageId(int errorIconImageId) {
+        public Builder errorIconImageId(@LayoutRes int errorIconImageId) {
             this.errorIconImageId = errorIconImageId;
             return this;
         }
 
-        public Builder errorTextTipId(int errorTextTipId) {
+        public Builder errorTextTipId(@LayoutRes int errorTextTipId) {
             this.errorTextTipId = errorTextTipId;
             return this;
         }
 
         /**
          * 为状态View显示隐藏监听事件
-         * @param onShowHideViewListener
+         * @param listener                  listener
          * @return
          */
-        public Builder onShowHideViewListener(OnShowHideViewListener onShowHideViewListener) {
-            this.onShowHideViewListener = onShowHideViewListener;
+        public Builder onShowHideViewListener(OnShowHideViewListener listener) {
+            this.onShowHideViewListener = listener;
             return this;
         }
 
         /**
          * 为重试加载按钮的监听事件
-         * @param onRetryListener
+         * @param onRetryListener           listener
          * @return
          */
         public Builder onRetryListener(OnRetryListener onRetryListener) {
@@ -275,13 +281,13 @@ public class StateLayoutManager {
             return this;
         }
 
+        /**
+         * 创建对象
+         * @return
+         */
         public StateLayoutManager build() {
             return new StateLayoutManager(this);
         }
-    }
-
-    public static Builder newBuilder(Context context) {
-        return new Builder(context);
     }
 
 }

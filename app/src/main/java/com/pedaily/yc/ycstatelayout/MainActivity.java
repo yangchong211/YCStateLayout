@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
-import com.pedaily.yc.statelayoutlib.StateLayoutManager;
+import com.ns.yc.ycstatelib.StateLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +24,7 @@ import java.util.List;
  * 修订历史：
  * ================================================
  */
+
 public class MainActivity extends BaseActivity {
 
     private RecyclerView recyclerView;

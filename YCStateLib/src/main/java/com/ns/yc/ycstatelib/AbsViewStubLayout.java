@@ -1,4 +1,4 @@
-package com.pedaily.yc.statelayoutlib;
+package com.ns.yc.ycstatelib;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -7,21 +7,21 @@ import android.view.ViewStub;
 
 
 /**
- * ================================================
- * 作    者：杨充
- * 版    本：1.0
- * 创建日期：2017/7/6
- * 描    述：
- * 修订历史：
- * ================================================
+ * <pre>
+ *     @author yangchong
+ *     blog  : https://github.com/yangchong211
+ *     time  : 2017/7/6
+ *     desc  : ViewStubLayout
+ *     revise:
+ * </pre>
  */
-public abstract class VLayout {
+public abstract class AbsViewStubLayout {
 
     protected ViewStub mLayoutVs;
 
     protected View mContentView;
 
-    protected void initLayout(@LayoutRes int layoutResId, Context context) {
+    protected void initLayout(Context context , @LayoutRes int layoutResId) {
         mLayoutVs = new ViewStub(context);
         mLayoutVs.setLayoutResource(layoutResId);
     }
@@ -34,5 +34,9 @@ public abstract class VLayout {
         mContentView = contentView;
     }
 
+    /**
+     * 设置数据
+     * @param objects           数据
+     */
     protected abstract void setData(Object... objects);
 }

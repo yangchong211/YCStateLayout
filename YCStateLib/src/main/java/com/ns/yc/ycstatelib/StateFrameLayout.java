@@ -1,8 +1,6 @@
-package com.pedaily.yc.statelayoutlib;
+package com.ns.yc.ycstatelib;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.support.annotation.LayoutRes;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -14,15 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * ================================================
- * 作    者：杨充
- * 版    本：1.0
- * 创建日期：2017/7/6
- * 描    述：
- * 修订历史：
- * ================================================
+ * <pre>
+ *     @author yangchong
+ *     blog  : https://github.com/yangchong211
+ *     time  : 2017/7/6
+ *     desc  : 自定义帧布局
+ *     revise:
+ * </pre>
  */
-public class RootFrameLayout extends FrameLayout {
+public class StateFrameLayout extends FrameLayout {
 
     /**
      *  loading 加载id
@@ -47,7 +45,7 @@ public class RootFrameLayout extends FrameLayout {
     /**
      *  空数据id
      */
-    public static final int LAYOUT_EMPTYDATA_ID = 5;
+    public static final int LAYOUT_EMPTY_DATA_ID = 5;
 
     /**
      *  存放布局集合
@@ -62,37 +60,42 @@ public class RootFrameLayout extends FrameLayout {
     private StateLayoutManager mStatusLayoutManager;
 
 
-    public RootFrameLayout(Context context) {
+    public StateFrameLayout(Context context) {
         super(context);
     }
 
-    public RootFrameLayout(Context context, AttributeSet attrs) {
+    public StateFrameLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public RootFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public StateFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public RootFrameLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
 
     public void setStatusLayoutManager(StateLayoutManager statusLayoutManager) {
         mStatusLayoutManager = statusLayoutManager;
-
+        //添加所有的布局到帧布局
         addAllLayoutToRootLayout();
     }
 
     private void addAllLayoutToRootLayout() {
-        if (mStatusLayoutManager.contentLayoutResId != 0) addLayoutResId(mStatusLayoutManager.contentLayoutResId, RootFrameLayout.LAYOUT_CONTENT_ID);
-        if (mStatusLayoutManager.loadingLayoutResId != 0) addLayoutResId(mStatusLayoutManager.loadingLayoutResId, RootFrameLayout.LAYOUT_LOADING_ID);
+        if (mStatusLayoutManager.contentLayoutResId != 0) {
+            addLayoutResId(mStatusLayoutManager.contentLayoutResId, StateFrameLayout.LAYOUT_CONTENT_ID);
+        }
+        if (mStatusLayoutManager.loadingLayoutResId != 0) {
+            addLayoutResId(mStatusLayoutManager.loadingLayoutResId, StateFrameLayout.LAYOUT_LOADING_ID);
+        }
 
-        if (mStatusLayoutManager.emptyDataVs != null) addView(mStatusLayoutManager.emptyDataVs);
-        if (mStatusLayoutManager.errorVs != null) addView(mStatusLayoutManager.errorVs);
-        if (mStatusLayoutManager.netWorkErrorVs != null) addView(mStatusLayoutManager.netWorkErrorVs);
+        if (mStatusLayoutManager.emptyDataVs != null) {
+            addView(mStatusLayoutManager.emptyDataVs);
+        }
+        if (mStatusLayoutManager.errorVs != null) {
+            addView(mStatusLayoutManager.errorVs);
+        }
+        if (mStatusLayoutManager.netWorkErrorVs != null) {
+            addView(mStatusLayoutManager.netWorkErrorVs);
+        }
     }
 
     private void addLayoutResId(@LayoutRes int layoutResId, int id) {
@@ -121,8 +124,8 @@ public class RootFrameLayout extends FrameLayout {
      *  显示空数据
      */
     public void showEmptyData(int iconImage, String textTip) {
-        if (inflateLayout(LAYOUT_EMPTYDATA_ID)) {
-            showHideViewById(LAYOUT_EMPTYDATA_ID);
+        if (inflateLayout(LAYOUT_EMPTY_DATA_ID)) {
+            showHideViewById(LAYOUT_EMPTY_DATA_ID);
             emptyDataViewAddData(iconImage, textTip);
         }
     }
@@ -147,7 +150,7 @@ public class RootFrameLayout extends FrameLayout {
 
     private void emptyDataViewAddData(int iconImage, String textTip) {
         if (iconImage == 0 && TextUtils.isEmpty(textTip)) return;
-        View emptyDataView = layoutSparseArray.get(LAYOUT_EMPTYDATA_ID);
+        View emptyDataView = layoutSparseArray.get(LAYOUT_EMPTY_DATA_ID);
         View iconImageView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataIconImageId);
         View textView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataTextTipId);
         if (iconImageView != null && iconImageView instanceof ImageView) {
@@ -160,12 +163,13 @@ public class RootFrameLayout extends FrameLayout {
     }
 
     public void showLayoutEmptyData(Object... objects) {
-        if (inflateLayout(LAYOUT_EMPTYDATA_ID)) {
-            showHideViewById(LAYOUT_EMPTYDATA_ID);
+        if (inflateLayout(LAYOUT_EMPTY_DATA_ID)) {
+            showHideViewById(LAYOUT_EMPTY_DATA_ID);
 
-            VLayout emptyDataLayout = mStatusLayoutManager.emptyDataLayout;
-            if (emptyDataLayout != null)
+            AbsViewStubLayout emptyDataLayout = mStatusLayoutManager.emptyDataLayout;
+            if (emptyDataLayout != null) {
                 emptyDataLayout.setData(objects);
+            }
         }
     }
 
@@ -191,9 +195,10 @@ public class RootFrameLayout extends FrameLayout {
         if (inflateLayout(LAYOUT_ERROR_ID)) {
             showHideViewById(LAYOUT_ERROR_ID);
 
-            VLayout errorLayout = mStatusLayoutManager.errorLayout;
-            if (errorLayout != null)
+            AbsViewStubLayout errorLayout = mStatusLayoutManager.errorLayout;
+            if (errorLayout != null) {
                 errorLayout.setData(objects);
+            }
         }
     }
 
@@ -243,7 +248,7 @@ public class RootFrameLayout extends FrameLayout {
                     isShow = false;
                 }
                 break;
-            case LAYOUT_EMPTYDATA_ID:
+            case LAYOUT_EMPTY_DATA_ID:
                 if (mStatusLayoutManager.emptyDataVs != null) {
                     View view = mStatusLayoutManager.emptyDataVs.inflate();
                     if (mStatusLayoutManager.emptyDataLayout != null) mStatusLayoutManager.emptyDataLayout.setView(view);
@@ -254,6 +259,8 @@ public class RootFrameLayout extends FrameLayout {
                     isShow = false;
                 }
                 break;
+            default:
+                break;
         }
         return isShow;
     }
@@ -263,7 +270,8 @@ public class RootFrameLayout extends FrameLayout {
      *  重试加载
      */
     private void retryLoad(View view, int id) {
-        View retryView = view.findViewById(mStatusLayoutManager.retryViewId != 0 ? mStatusLayoutManager.retryViewId : id);
+        View retryView = view.findViewById(mStatusLayoutManager.retryViewId != 0 ?
+                mStatusLayoutManager.retryViewId : id);
         if (retryView == null || mStatusLayoutManager.onRetryListener == null) return;
         retryView.setOnClickListener(new OnClickListener() {
             @Override
