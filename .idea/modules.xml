@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/YCStateLayout.iml" filepath="$PROJECT_DIR$/YCStateLayout.iml" />
+      <module fileurl="file://D:\GitHub\YCStateLayout\YCStateLayout.iml" filepath="D:\GitHub\YCStateLayout\YCStateLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/YCStateLib/YCStateLib.iml" filepath="$PROJECT_DIR$/YCStateLib/YCStateLib.iml" />
+      <module fileurl="file://D:\GitHub\YCStateLayout\YCStateLib\YCStateLib.iml" filepath="D:\GitHub\YCStateLayout\YCStateLib\YCStateLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\GitHub\YCStateLayout\app\app.iml" filepath="D:\GitHub\YCStateLayout\app\app.iml" />
     </modules>
   </component>
 </project>
