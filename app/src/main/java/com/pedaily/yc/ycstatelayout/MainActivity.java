@@ -49,6 +49,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        showLoading();
         initViewContent();
         initData();
         initRecycleView();
@@ -58,6 +59,7 @@ public class MainActivity extends BaseActivity {
         Button btn_empty = (Button) findViewById(R.id.btn_empty);
         Button btn_error = (Button) findViewById(R.id.btn_error);
         Button btn_network_error = (Button) findViewById(R.id.btn_network_error);
+        Button btn_test = (Button) findViewById(R.id.btn_test);
         btn_empty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +78,12 @@ public class MainActivity extends BaseActivity {
                 initSettingNetwork();
             }
         });
+        btn_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,TestActivity.class));
+            }
+        });
     }
 
     private void initRecycleView() {
@@ -91,9 +99,11 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+        showContent();
     }
 
     protected void initData() {
+        lists.clear();
         for(int a=0 ; a<50 ; a++){
             lists.add("这是第"+a+"条数据");
         }

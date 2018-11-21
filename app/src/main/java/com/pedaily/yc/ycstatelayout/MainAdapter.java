@@ -59,7 +59,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
 
         public MyViewHolder(View view, HhItemClickListener listener) {
             super(view);
-            tv_item = (TextView) view.findViewById(R.id.tv_item);
+            tv_item = view.findViewById(R.id.tv_item);
             this.mListener = listener;
             view.setOnClickListener(this);
         }

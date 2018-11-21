@@ -25,6 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="network_error"/>
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

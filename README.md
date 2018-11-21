@@ -23,7 +23,7 @@
 * 倘若有些页面想定制状态布局，也可以自由实现，很简单
 
 #### 4.使用方法
-* **代码引用：compile 'cn.yc:YCStateLib:1.1.5'**
+* **代码引用：compile 'cn.yc:YCStateLib:1.1.6'**
 * 如下所示，具体可以直接参考代码，更多可以直接查看demo
     ```
     statusLayoutManager = StateLayoutManager.newBuilder(this)
@@ -97,6 +97,36 @@
 - v1.0 更新于2017年3月28日
 - v1.1 更新于2017年12月3日
 - v1.1.5 更新于2018年4月25日
+- v1.1.6 更新于2018年11月15日，更新targetSdkVersion为27
 
+
+#### 关于其他内容介绍
+![image](https://upload-images.jianshu.io/upload_images/4432347-7100c8e5a455c3ee.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+#### 关于博客汇总链接
+- 1.[技术博客汇总](https://www.jianshu.com/p/614cb839182c)
+- 2.[开源项目汇总](https://blog.csdn.net/m0_37700275/article/details/80863574)
+- 3.[生活博客汇总](https://blog.csdn.net/m0_37700275/article/details/79832978)
+- 4.[喜马拉雅音频汇总](https://www.jianshu.com/p/f665de16d1eb)
+- 5.[其他汇总](https://www.jianshu.com/p/53017c3fc75d)
+
+
+
+
+#### 关于LICENSE
+```
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
 
