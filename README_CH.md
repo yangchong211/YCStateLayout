@@ -4,8 +4,9 @@
 #### 0.前沿介绍
 - 状态切换，让View状态的切换和Activity彻底分离开。用builder模式来自由的添加需要的状态View，可以设置有数据，数据为空，加载数据错误，网络错误，加载中等多种状态，并且支持自定义状态的布局。。目前已经用于新芽，投资界等正式项目中，拓展性强！！
 
-##### [中文文档]()
-##### [英文文档]()
+##### [Chinese](https://github.com/yangchong211/YCStateLayout/blob/master/README_CH.md)
+##### [English](https://github.com/yangchong211/YCStateLayout/blob/master/README.md)
+
 
 #### 1.关于Android界面切换状态的介绍
 * 怎样切换界面状态？有些界面想定制自定义状态？状态如何添加点击事件？下面就为解决这些问题！

@@ -5,8 +5,8 @@
 #### Function introduction
 - State switching, so that the View state switch and Activity completely separate. Using builder mode to freely add the required state View, can set data, data is empty, load data error, network error, load and other states, and support the layout of custom state. At present has been used in other formal projects, strong expansion!
 
-##### [中文文档Chinese]()
-##### [英文文档English]()
+##### [Chinese](https://github.com/yangchong211/YCStateLayout/blob/master/README_CH.md)
+##### [English](https://github.com/yangchong211/YCStateLayout/blob/master/README.md)
 
 ### 1.An introduction to the switching State of Android Interface
 #### 1.1 Problems encountered in development
@@ -25,11 +25,13 @@
 
 ### 2.Train of thought change, extract separate class management several kinds of state
 #### Previous practice：
-    * Directly include these interfaces into the main interface, then dynamically switch the interface, later found that this processing is not easy to reuse in other projects, and in activity to deal with the display and hiding of these states is messy
-    * Using the child class to inherit the parent property, write the switching state in the parent class, but what can some interfaces do if they do not inherit the parent class
+- Directly include these interfaces into the main interface, then dynamically switch the interface, later found that this processing is not easy to reuse in other projects, and in activity to deal with the display and hiding of these states is messy
+- Using the child class to inherit the parent property, write the switching state in the parent class, but what can some interfaces do if they do not inherit the parent class
+
+
 #### Present practice：
-    * The switching of View states is completely separated from Activity. The View of these states must be encapsulated in a management class and several methods are exposed to implement the switching between View.
-    * The View that can be required varies from project to project, so consider designing the management class as an builder schema to freely add the required state View
+- The switching of View states is completely separated from Activity. The View of these states must be encapsulated in a management class and several methods are exposed to implement the switching between View.
+- The View that can be required varies from project to project, so consider designing the management class as an builder schema to freely add the required state View
 
 
 ### 3.An Analysis of the advantages of this State switching tool
@@ -113,10 +115,10 @@
 
 
 ###  6.版本更新说明
-- v1.0 更新于2017年3月28日
-- v1.1 更新于2017年12月3日
-- v1.1.5 更新于2018年4月25日
-- v1.1.6 更新于2018年11月15日，更新targetSdkVersion为27
+- v1.0 Updated on 28 March 2017
+- v1.1 Updated on 3 December 2017
+- v1.1.5 Updated on 25 April 2018
+- v1.1.6 Updated on November 15, 2018, updating targetSdkVersion to 27
 
 
 #### 关于其他内容介绍
