@@ -134,7 +134,7 @@
 ![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/54463227589674008.png)
 ![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/739964693513198374.jpg)
 ![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/75707536091894445.jpg)
-
+<img src="https://github.com/yangchong211/YCStateLayout/blob/master/image/125771775308836257.png" width="300" hegiht="520" align=center />
 
 ###  6.About other
 #### 6.1 Update
