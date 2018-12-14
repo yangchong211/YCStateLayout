@@ -154,6 +154,10 @@
 - 3.[Life blog summary](https://blog.csdn.net/m0_37700275/article/details/79832978)
 
 
+#### 6.4 About recommend
+- Great summary of blog notes, including Java basics and in-depth knowledge, Android technology blog, Python learning notes, and so on, but also includes the usual development of bug summary, of course, also collected a large number of interview questions after work. Long-term update, maintenance and revision, continuous improvement. Open source files are in markdown format!
+- chained address ： https://github.com/yangchong211/YCBlogs
+- If you feel good, you can star, thank you! Of course, you are also welcome to put forward suggestions, everything starts at a slight, quantitative change causes qualitative change!
 
 
 #### 6.4 About LICENSE
