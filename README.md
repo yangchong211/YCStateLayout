@@ -1,4 +1,4 @@
-### YCStateLayout State Switching
+## YCStateLayout State Switching
 
 
 ### 0.Dependency
@@ -20,8 +20,17 @@
 #### 0.2 Basic introduction
 ##### Function introduction
 - State switching, so that the View state switch and Activity completely separate. Using builder mode to freely add the required state View, can set data, data is empty, load data error, network error, load and other states, and support the layout of custom state. At present has been used in other formal projects, strong expansion!
-##### [Chinese](https://github.com/yangchong211/YCStateLayout/blob/master/README_CH.md)
-##### [English](https://github.com/yangchong211/YCStateLayout/blob/master/README.md)
+
+
+##### About language
+- [Chinese中文文档](https://github.com/yangchong211/YCStateLayout/blob/master/README_CH.md)
+- [English英文文档](https://github.com/yangchong211/YCStateLayout/blob/master/README.md)
+
+
+
+#### 0.3 Case demonstration animation
+![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/status.gif)
+
 
 ### 1.An introduction to the switching State of Android Interface
 #### 1.1 Problems encountered in development
@@ -120,11 +129,11 @@
 
 
 ### 5.Realization effect
-![](https://github.com/yangchong211/YCStateLayout/blob/master/image/125771775308836257.png)
-![](https://github.com/yangchong211/YCStateLayout/blob/master/image/407442243542773132.jpg)
-![](https://github.com/yangchong211/YCStateLayout/blob/master/image/54463227589674008.png)
-![](https://github.com/yangchong211/YCStateLayout/blob/master/image/739964693513198374.jpg)
-![](https://github.com/yangchong211/YCStateLayout/blob/master/image/75707536091894445.jpg)
+![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/125771775308836257.png)
+![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/407442243542773132.jpg)
+![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/54463227589674008.png)
+![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/739964693513198374.jpg)
+![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/75707536091894445.jpg)
 
 
 ###  6.About other
