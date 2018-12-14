@@ -129,11 +129,11 @@
 
 
 ### 5.Realization effect
-<img src="https://github.com/yangchong211/YCStateLayout/blob/master/image/125771775308836257.png" width="300" hegiht="520" align=center />
-<img src="https://github.com/yangchong211/YCStateLayout/blob/master/image/407442243542773132.jpg" width="300" hegiht="520" align=center />
-<img src="https://github.com/yangchong211/YCStateLayout/blob/master/image/54463227589674008.png" width="300" hegiht="520" align=center />
-<img src="https://github.com/yangchong211/YCStateLayout/blob/master/image/739964693513198374.jpg" width="300" hegiht="520" align=center />
-<img src="https://github.com/yangchong211/YCStateLayout/blob/master/image/75707536091894445.jpg" width="300" hegiht="520" align=center />
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/125771775308836257.png)
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/407442243542773132.jpg)
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/54463227589674008.png)
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/739964693513198374.jpg)
+![](https://github.com/yangchong211/YCStateLayout/blob/master/image/75707536091894445.jpg)
 
 
 ###  6.About other
