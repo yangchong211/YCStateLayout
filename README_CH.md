@@ -53,6 +53,21 @@
 * 现在做法：
     * 让View状态的切换和Activity彻底分离开，必须把这些状态View都封装到一个管理类中，然后暴露出几个方法来实现View之间的切换。
     * 在不同的项目中可以需要的View也不一样，所以考虑把管理类设计成builder模式来自由的添加需要的状态View
+- 为何要这样？
+    - 一般在需要用户等待的场景，显示一个Loading动画可以让用户知道App正在加载数据，而不是程序卡死，从而给用户较好的使用体验。
+    - 当加载的数据为空时显示一个数据为空的视图、在数据加载失败时显示加载失败对应的UI并支持点击重试会比白屏的用户体验更好一些。
+    - 加载中、加载失败、空数据的UI风格，一般来说在App内的所有页面中需要保持一致，也就是需要做到全局统一。
+- 如何降低偶性和入侵性
+    - 让View状态的切换和Activity彻底分离开，必须把这些状态View都封装到一个管理类中，然后暴露出几个方法来实现View之间的切换。
+    在不同的项目中可以需要的View也不一样，所以考虑把管理类设计成builder模式来自由的添加需要的状态View。
+    - 那么如何降低耦合性，让代码入侵性低。方便维护和修改，且移植性强呢？大概具备这样的条件……
+        - 可以运用在activity或者fragment中
+        - 不需要在布局中添加LoadingView，而是统一管理不同状态视图，同时暴露对外设置自定义状态视图方法，方便UI特定页面定制
+        - 支持设置自定义不同状态视图，即使在BaseActivity统一处理状态视图管理，也支持单个页面定制
+        - 在加载视图的时候像异常和空页面能否用ViewStub代替，这样减少绘制，只有等到出现异常和空页面时，才将视图给inflate出来
+        - 当页面出现网络异常页面，空页面等，页面会有交互事件，这时候可以设置点击设置网络或者点击重新加载等等
+
+
 
 
 ### 3.关于该状态切换工具优点分析
@@ -64,64 +79,176 @@
 
 ### 4.使用方法
 * 如下所示，具体可以直接参考代码，更多可以直接查看demo
+- 可以自由切换内容，空数据，异常错误，加载，网络错误等5种状态。父类BaseActivity直接暴露5中状态，方便子类统一管理状态切换，这里fragment的封装和activity差不多。
+    ``` 
+    /**
+    * ================================================
+    * 作    者：杨充
+    * 版    本：1.0
+    * 创建日期：2017/7/6
+    * 描    述：抽取类
+    * 修订历史：
+    * ================================================
+    */
+    public abstract class BaseActivity extends AppCompatActivity {
+    
+        protected StatusLayoutManager statusLayoutManager;
+    
+        @Override
+        protected void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_base_view);
+            initStatusLayout();
+            initBaseView();
+            initToolBar();
+            initView();
+        }
+        
+        //子类必须重写该方法
+        protected abstract void initStatusLayout();
+    
+        protected abstract void initView();
+    
+        /**
+        * 获取到布局
+        */
+        private void initBaseView() {
+            LinearLayout ll_main = (LinearLayout) findViewById(R.id.ll_main);
+            ll_main.addView(statusLayoutManager.getRootLayout());
+        }
+    
+        //正常展示数据状态
+        protected void showContent() {
+            statusLayoutManager.showContent();
+        }
+    
+        //加载数据为空时状态
+        protected void showEmptyData() {
+            statusLayoutManager.showEmptyData();
+        }
+    
+        //加载数据错误时状态
+        protected void showError() {
+            statusLayoutManager.showError();
+        }
+    
+        //网络错误时状态
+        protected void showNetWorkError() {
+            statusLayoutManager.showNetWorkError();
+        }
+    
+        //正在加载中状态
+        protected void showLoading() {
+            statusLayoutManager.showLoading();
+        }
+    }
     ```
-    statusLayoutManager = StateLayoutManager.newBuilder(this)
-                .contentView(R.layout.activity_content)
+- 子类继承BaseActivity后，该如何操作呢？具体如下所示
+    ```
+    @Override
+    protected void initStatusLayout() {
+        statusLayoutManager = StateLayoutManager.newBuilder(this)
+                .contentView(R.layout.activity_main)
                 .emptyDataView(R.layout.activity_emptydata)
                 .errorView(R.layout.activity_error)
                 .loadingView(R.layout.activity_loading)
                 .netWorkErrorView(R.layout.activity_networkerror)
                 .build();
-    
-    
-    /**
-     * 点击重新刷新数据
-     */
-    private void initEmptyDataView() {
-        statusLayoutManager.showEmptyData();
-        LinearLayout ll_empty_data = (LinearLayout) findViewById(R.id.ll_empty_data);
-        ll_empty_data.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                initData();
-                adapter.notifyDataSetChanged();
-                showContent();
-            }
-        });
     }
     
+    //或者添加上监听事件
+    @Override
+    protected void initStatusLayout() {
+        statusLayoutManager = StateLayoutManager.newBuilder(this)
+                .contentView(R.layout.activity_content_data)
+                .emptyDataView(R.layout.activity_empty_data)
+                .errorView(R.layout.activity_error_data)
+                .loadingView(R.layout.activity_loading_data)
+                .netWorkErrorView(R.layout.activity_networkerror)
+                .onRetryListener(new OnRetryListener() {
+                    @Override
+                    public void onRetry() {
+                        //为重试加载按钮的监听事件
+                    }
+                })
+                .onShowHideViewListener(new OnShowHideViewListener() {
+                    @Override
+                    public void onShowView(View view, int id) {
+                        //为状态View显示监听事件
+                    }
+    
+                    @Override
+                    public void onHideView(View view, int id) {
+                        //为状态View隐藏监听事件
+                    }
+                })
+                .build();
+    }
+    
+    //如何切换状态呢？
+    showContent();
+    showEmptyData();
+    showError();
+    showLoading();
+    showNetWorkError();
+    
+    //或者这样操作也可以
+    statusLayoutManager.showLoading();
+    statusLayoutManager.showContent();
+    ```
+- 那么如何设置状态页面的交互事件呢？当状态是加载数据失败时，点击可以刷新数据；当状态是无网络时，点击可以设置网络。代码如下所示：
+    ```
     /**
-     * 点击重新刷新
-     */
+    * 点击重新刷新
+    */
     private void initErrorDataView() {
-        statusLayoutManager.showError();
-        LinearLayout ll_error_data = (LinearLayout) findViewById(R.id.ll_error_data);
-        ll_error_data.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                initData();
-                adapter.notifyDataSetChanged();
-                showContent();
-            }
-        });
+        statusLayoutManager.showError();
+        LinearLayout ll_error_data = (LinearLayout) findViewById(R.id.ll_error_data);
+        ll_error_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                initData();
+                adapter.notifyDataSetChanged();
+                showContent();
+            }
+        });
     }
     
     /**
-     * 点击设置网络
-     */
+    * 点击设置网络
+    */
     private void initSettingNetwork() {
-        statusLayoutManager.showNetWorkError();
-        LinearLayout ll_set_network = (LinearLayout) findViewById(R.id.ll_set_network);
-        ll_set_network.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent("android.settings.WIRELESS_SETTINGS");
-                startActivity(intent);
-            }
-        });
+        statusLayoutManager.showNetWorkError();
+        LinearLayout ll_set_network = (LinearLayout) findViewById(R.id.ll_set_network);
+        ll_set_network.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("android.settings.WIRELESS_SETTINGS");
+                startActivity(intent);
+            }
+        });
     }
     ```
-
+- 那有些页面想要自定义指定的状态页面UI，又该如何操作呢？倘若有些页面想定制状态布局，也可以自由实现，很简单：
+    ```
+    /**
+    * 自定义加载数据为空时的状态布局
+    */
+    private void initEmptyDataView() {
+        statusLayoutManager.showEmptyData();
+        //此处是自己定义的状态布局
+        statusLayoutManager.showLayoutEmptyData(R.layout.activity_emptydata);
+        LinearLayout ll_empty_data = (LinearLayout) findViewById(R.id.ll_empty_data);
+        ll_empty_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                initData();
+                adapter.notifyDataSetChanged();
+                showContent();
+            }
+        });
+    }
+    ``` 
 
 
 ### 5.实现效果

@@ -101,6 +101,15 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initRecycleView() {
+//        showContent();
+//        showEmptyData();
+//        showError();
+//        showLoading();
+//        showNetWorkError();
+//        statusLayoutManager.showLoading();
+//        statusLayoutManager.showContent();
+
+
         recyclerView = (RecyclerView) findViewById(R.id.recycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MainAdapter(lists,this);
@@ -128,6 +137,7 @@ public class MainActivity extends BaseActivity {
      * 点击重新刷新数据
      */
     private void initEmptyDataView() {
+
         statusLayoutManager.showEmptyData();
         LinearLayout ll_empty_data = (LinearLayout) findViewById(R.id.ll_empty_data);
         ll_empty_data.setOnClickListener(new View.OnClickListener() {

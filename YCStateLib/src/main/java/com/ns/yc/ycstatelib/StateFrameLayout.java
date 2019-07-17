@@ -1,3 +1,18 @@
+/*
+Copyright 2017 yangchong211（github.com/yangchong211）
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package com.ns.yc.ycstatelib;
 
 import android.content.Context;
@@ -158,11 +173,10 @@ public class StateFrameLayout extends FrameLayout {
         View emptyDataView = layoutSparseArray.get(LAYOUT_EMPTY_DATA_ID);
         View iconImageView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataIconImageId);
         View textView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataTextTipId);
-        if (iconImageView != null && iconImageView instanceof ImageView) {
+        if (iconImageView instanceof ImageView) {
             ((ImageView) iconImageView).setImageResource(iconImage);
         }
-
-        if (textView != null && textView instanceof TextView) {
+        if (textView instanceof TextView) {
             ((TextView) textView).setText(textTip);
         }
     }
@@ -170,7 +184,6 @@ public class StateFrameLayout extends FrameLayout {
     public void showLayoutEmptyData(Object... objects) {
         if (inflateLayout(LAYOUT_EMPTY_DATA_ID)) {
             showHideViewById(LAYOUT_EMPTY_DATA_ID);
-
             AbsViewStubLayout emptyDataLayout = mStatusLayoutManager.emptyDataLayout;
             if (emptyDataLayout != null) {
                 emptyDataLayout.setData(objects);
@@ -178,6 +191,11 @@ public class StateFrameLayout extends FrameLayout {
         }
     }
 
+    /**
+     * 展示错误
+     * @param iconImage             错误图片
+     * @param textTip               文字
+     */
     private void errorViewAddData(int iconImage, String textTip) {
         if (iconImage == 0 && TextUtils.isEmpty(textTip)) {
             return;
@@ -185,11 +203,10 @@ public class StateFrameLayout extends FrameLayout {
         View errorView = layoutSparseArray.get(LAYOUT_ERROR_ID);
         View iconImageView = errorView.findViewById(mStatusLayoutManager.emptyDataIconImageId);
         View textView = errorView.findViewById(mStatusLayoutManager.emptyDataTextTipId);
-        if (iconImageView != null && iconImageView instanceof ImageView) {
+        if (iconImageView instanceof ImageView) {
             ((ImageView) iconImageView).setImageResource(iconImage);
         }
-
-        if (textView != null && textView instanceof TextView) {
+        if (textView instanceof TextView) {
             ((TextView) textView).setText(textTip);
         }
     }
@@ -201,7 +218,6 @@ public class StateFrameLayout extends FrameLayout {
     public void showLayoutError(Object... objects) {
         if (inflateLayout(LAYOUT_ERROR_ID)) {
             showHideViewById(LAYOUT_ERROR_ID);
-
             AbsViewStubLayout errorLayout = mStatusLayoutManager.errorLayout;
             if (errorLayout != null) {
                 errorLayout.setData(objects);
@@ -211,7 +227,7 @@ public class StateFrameLayout extends FrameLayout {
 
     /**
      * 根据ID显示隐藏布局
-     * @param id
+     * @param id                        id值
      */
     private void showHideViewById(int id) {
         for (int i = 0; i < layoutSparseArray.size(); i++) {
@@ -234,9 +250,17 @@ public class StateFrameLayout extends FrameLayout {
         }
     }
 
+    /**
+     * 这个是处理ViewStub的逻辑，主要有网络异常布局，加载异常布局，空数据布局
+     * @param id                        布局id
+     * @return                          布尔值
+     */
     private boolean inflateLayout(int id) {
         boolean isShow = true;
-        if (layoutSparseArray.get(id) != null) return isShow;
+        //如果为null，则直接返回false
+        if (layoutSparseArray.get(id) == null) {
+            return false;
+        }
         switch (id) {
             case LAYOUT_NETWORK_ERROR_ID:
                 if (mStatusLayoutManager.netWorkErrorVs != null) {

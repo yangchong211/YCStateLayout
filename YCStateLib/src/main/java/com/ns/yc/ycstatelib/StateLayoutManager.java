@@ -1,3 +1,18 @@
+/*
+Copyright 2017 yangchong211（github.com/yangchong211）
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package com.ns.yc.ycstatelib;
 
 import android.content.Context;
@@ -16,14 +31,12 @@ import android.view.ViewStub;
  *     revise:
  * </pre>
  */
-public class StateLayoutManager {
+public final class StateLayoutManager {
 
     final Context context;
-    final ViewStub netWorkErrorVs;
+
     final int netWorkErrorRetryViewId;
-    final ViewStub emptyDataVs;
     final int emptyDataRetryViewId;
-    final ViewStub errorVs;
     final int errorRetryViewId;
     final int loadingLayoutResId;
     final int contentLayoutResId;
@@ -32,10 +45,14 @@ public class StateLayoutManager {
     final int emptyDataTextTipId;
     final int errorIconImageId;
     final int errorTextTipId;
+
+    final ViewStub emptyDataVs;
+    final ViewStub netWorkErrorVs;
+    final ViewStub errorVs;
     final AbsViewStubLayout errorLayout;
     final AbsViewStubLayout emptyDataLayout;
 
-    final StateFrameLayout rootFrameLayout;
+    private final StateFrameLayout rootFrameLayout;
     final OnShowHideViewListener onShowHideViewListener;
     final OnRetryListener onRetryListener;
 
@@ -43,7 +60,7 @@ public class StateLayoutManager {
         return new Builder(context);
     }
 
-    StateLayoutManager(Builder builder) {
+    private StateLayoutManager(Builder builder) {
         this.context = builder.context;
         this.loadingLayoutResId = builder.loadingLayoutResId;
         this.netWorkErrorVs = builder.netWorkErrorVs;

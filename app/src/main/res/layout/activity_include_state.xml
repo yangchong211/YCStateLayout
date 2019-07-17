@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--正常时布局-->
+    <include layout="@layout/activity_content"/>
+    <!--加载loading布局-->
+    <include layout="@layout/activity_loading"/>
+    <!--异常时布局-->
+    <include layout="@layout/activity_error"/>
+    <!--空数据时布局-->
+    <include layout="@layout/activity_emptydata"/>
+
+</LinearLayout>
