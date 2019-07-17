@@ -32,6 +32,10 @@
 ![image](https://github.com/yangchong211/YCStateLayout/blob/master/image/status.gif)
 
 
+#### 0.4 项目设计思路
+- StateFrameLayout是继承FrameLayout自定义布局
+
+
 
 ### 1.关于Android界面切换状态的介绍
 * 怎样切换界面状态？有些界面想定制自定义状态？状态如何添加点击事件？下面就为解决这些问题！

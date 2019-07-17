@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initStatusLayout() {
         statusLayoutManager = StateLayoutManager.newBuilder(this)
-                .contentView(R.layout.activity_content)
+                .contentView(R.layout.activity_main)
                 .emptyDataView(R.layout.activity_emptydata)
                 .errorView(R.layout.activity_error)
                 .loadingView(R.layout.activity_loading)
@@ -60,6 +60,8 @@ public class MainActivity extends BaseActivity {
         Button btn_error = (Button) findViewById(R.id.btn_error);
         Button btn_network_error = (Button) findViewById(R.id.btn_network_error);
         Button btn_test = (Button) findViewById(R.id.btn_test);
+        Button btn_test2 = (Button) findViewById(R.id.btn_test2);
+        Button btn_test3 = (Button) findViewById(R.id.btn_test3);
         btn_empty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +84,18 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,TestActivity.class));
+            }
+        });
+        btn_test2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Test2Activity.class));
+            }
+        });
+        btn_test3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Test3Activity.class));
             }
         });
     }

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TestActivity extends AppCompatActivity implements View.OnClickListener {
+public class Test2Activity extends AppCompatActivity implements View.OnClickListener {
 
 
     private StateLayoutManager statusLayoutManager;
@@ -46,7 +46,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 .contentView(R.layout.activity_content)
                 .emptyDataView(R.layout.activity_emptydata)
                 .errorView(R.layout.activity_error)
-                .loadingView(R.layout.activity_loading)
+                .loadingView(R.layout.activity_loading2)
                 .netWorkErrorView(R.layout.activity_networkerror)
                 .build();
     }
@@ -56,18 +56,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout ll_main = (LinearLayout) findViewById(R.id.ll_main);
         ll_main.addView(statusLayoutManager.getRootLayout());
         Toolbar toolbar = findViewById(R.id.tb_bar);
-        toolbar.setTitle("测试1页面");
+        toolbar.setTitle("测试2页面");
     }
 
     private void initView() {
         statusLayoutManager.showLoading();
-
         Button btn_empty = (Button) findViewById(R.id.btn_empty);
         Button btn_error = (Button) findViewById(R.id.btn_error);
         Button btn_network_error = (Button) findViewById(R.id.btn_network_error);
-        Button btn_test = (Button) findViewById(R.id.btn_test);
-        Button btn_test2 = (Button) findViewById(R.id.btn_test2);
-        Button btn_test3 = (Button) findViewById(R.id.btn_test3);
+
 
         btn_empty.setOnClickListener(this);
         btn_error.setOnClickListener(this);
@@ -106,7 +103,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemClick(View view, int position) {
                 if(lists.size()>position && position>-1){
-                    Toast.makeText(TestActivity.this,"条目"+position+"被点击呢",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Test2Activity.this,"条目"+position+"被点击呢",Toast.LENGTH_SHORT).show();
                 }
             }
         });

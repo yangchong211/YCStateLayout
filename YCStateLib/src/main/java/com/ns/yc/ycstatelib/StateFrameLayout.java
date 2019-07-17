@@ -50,7 +50,7 @@ public class StateFrameLayout extends FrameLayout {
     /**
      *  存放布局集合
      */
-    private SparseArray<View> layoutSparseArray = new SparseArray();
+    private SparseArray<View> layoutSparseArray = new SparseArray<>();
 
     //private HashMap<Integer,View> map = new HashMap<>();
 
@@ -108,16 +108,18 @@ public class StateFrameLayout extends FrameLayout {
      *  显示loading
      */
     public void showLoading() {
-        if (layoutSparseArray.get(LAYOUT_LOADING_ID) != null)
+        if (layoutSparseArray.get(LAYOUT_LOADING_ID) != null) {
             showHideViewById(LAYOUT_LOADING_ID);
+        }
     }
 
     /**
      *  显示内容
      */
     public void showContent() {
-        if (layoutSparseArray.get(LAYOUT_CONTENT_ID) != null)
+        if (layoutSparseArray.get(LAYOUT_CONTENT_ID) != null) {
             showHideViewById(LAYOUT_CONTENT_ID);
+        }
     }
 
     /**
@@ -134,8 +136,9 @@ public class StateFrameLayout extends FrameLayout {
      *  显示网络异常
      */
     public void showNetWorkError() {
-        if (inflateLayout(LAYOUT_NETWORK_ERROR_ID))
+        if (inflateLayout(LAYOUT_NETWORK_ERROR_ID)) {
             showHideViewById(LAYOUT_NETWORK_ERROR_ID);
+        }
     }
 
     /**
@@ -149,7 +152,9 @@ public class StateFrameLayout extends FrameLayout {
     }
 
     private void emptyDataViewAddData(int iconImage, String textTip) {
-        if (iconImage == 0 && TextUtils.isEmpty(textTip)) return;
+        if (iconImage == 0 && TextUtils.isEmpty(textTip)) {
+            return;
+        }
         View emptyDataView = layoutSparseArray.get(LAYOUT_EMPTY_DATA_ID);
         View iconImageView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataIconImageId);
         View textView = emptyDataView.findViewById(mStatusLayoutManager.emptyDataTextTipId);
@@ -174,7 +179,9 @@ public class StateFrameLayout extends FrameLayout {
     }
 
     private void errorViewAddData(int iconImage, String textTip) {
-        if (iconImage == 0 && TextUtils.isEmpty(textTip)) return;
+        if (iconImage == 0 && TextUtils.isEmpty(textTip)) {
+            return;
+        }
         View errorView = layoutSparseArray.get(LAYOUT_ERROR_ID);
         View iconImageView = errorView.findViewById(mStatusLayoutManager.emptyDataIconImageId);
         View textView = errorView.findViewById(mStatusLayoutManager.emptyDataTextTipId);
@@ -213,11 +220,15 @@ public class StateFrameLayout extends FrameLayout {
             //显示该view
             if(key == id) {
                 valueView.setVisibility(View.VISIBLE);
-                if(mStatusLayoutManager.onShowHideViewListener != null) mStatusLayoutManager.onShowHideViewListener.onShowView(valueView, key);
+                if(mStatusLayoutManager.onShowHideViewListener != null) {
+                    mStatusLayoutManager.onShowHideViewListener.onShowView(valueView, key);
+                }
             } else {
                 if(valueView.getVisibility() != View.GONE) {
                     valueView.setVisibility(View.GONE);
-                    if(mStatusLayoutManager.onShowHideViewListener != null) mStatusLayoutManager.onShowHideViewListener.onHideView(valueView, key);
+                    if(mStatusLayoutManager.onShowHideViewListener != null) {
+                        mStatusLayoutManager.onShowHideViewListener.onHideView(valueView, key);
+                    }
                 }
             }
         }
@@ -240,7 +251,9 @@ public class StateFrameLayout extends FrameLayout {
             case LAYOUT_ERROR_ID:
                 if (mStatusLayoutManager.errorVs != null) {
                     View view = mStatusLayoutManager.errorVs.inflate();
-                    if (mStatusLayoutManager.errorLayout != null) mStatusLayoutManager.errorLayout.setView(view);
+                    if (mStatusLayoutManager.errorLayout != null) {
+                        mStatusLayoutManager.errorLayout.setView(view);
+                    }
                     retryLoad(view, mStatusLayoutManager.errorRetryViewId);
                     layoutSparseArray.put(id, view);
                     isShow = true;
@@ -251,7 +264,9 @@ public class StateFrameLayout extends FrameLayout {
             case LAYOUT_EMPTY_DATA_ID:
                 if (mStatusLayoutManager.emptyDataVs != null) {
                     View view = mStatusLayoutManager.emptyDataVs.inflate();
-                    if (mStatusLayoutManager.emptyDataLayout != null) mStatusLayoutManager.emptyDataLayout.setView(view);
+                    if (mStatusLayoutManager.emptyDataLayout != null) {
+                        mStatusLayoutManager.emptyDataLayout.setView(view);
+                    }
                     retryLoad(view, mStatusLayoutManager.emptyDataRetryViewId);
                     layoutSparseArray.put(id, view);
                     isShow = true;
@@ -272,7 +287,9 @@ public class StateFrameLayout extends FrameLayout {
     private void retryLoad(View view, int id) {
         View retryView = view.findViewById(mStatusLayoutManager.retryViewId != 0 ?
                 mStatusLayoutManager.retryViewId : id);
-        if (retryView == null || mStatusLayoutManager.onRetryListener == null) return;
+        if (retryView == null || mStatusLayoutManager.onRetryListener == null) {
+            return;
+        }
         retryView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
