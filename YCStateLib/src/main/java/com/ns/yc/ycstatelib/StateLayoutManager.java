@@ -31,7 +31,7 @@ import android.view.ViewStub;
  *     revise:
  * </pre>
  */
-public final class StateLayoutManager {
+public class StateLayoutManager {
 
     final Context context;
 
