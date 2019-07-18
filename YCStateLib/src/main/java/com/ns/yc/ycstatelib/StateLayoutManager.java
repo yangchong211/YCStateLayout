@@ -34,9 +34,11 @@ import android.view.ViewStub;
 public class StateLayoutManager {
 
     final Context context;
-
+    final ViewStub netWorkErrorVs;
     final int netWorkErrorRetryViewId;
+    final ViewStub emptyDataVs;
     final int emptyDataRetryViewId;
+    final ViewStub errorVs;
     final int errorRetryViewId;
     final int loadingLayoutResId;
     final int contentLayoutResId;
@@ -45,14 +47,10 @@ public class StateLayoutManager {
     final int emptyDataTextTipId;
     final int errorIconImageId;
     final int errorTextTipId;
-
-    final ViewStub emptyDataVs;
-    final ViewStub netWorkErrorVs;
-    final ViewStub errorVs;
     final AbsViewStubLayout errorLayout;
     final AbsViewStubLayout emptyDataLayout;
 
-    private final StateFrameLayout rootFrameLayout;
+    final StateFrameLayout rootFrameLayout;
     final OnShowHideViewListener onShowHideViewListener;
     final OnRetryListener onRetryListener;
 
