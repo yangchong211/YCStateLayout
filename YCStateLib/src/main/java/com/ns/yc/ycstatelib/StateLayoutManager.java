@@ -145,6 +145,10 @@ public class StateLayoutManager {
         showError(0, "");
     }
 
+    /**
+     * 显示异常
+     * @param objects               objects
+     */
     public void showLayoutError(Object... objects) {
         rootFrameLayout.showLayoutError(objects);
     }

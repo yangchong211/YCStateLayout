@@ -23,7 +23,7 @@ import android.view.View;
  *     @author yangchong
  *     blog  : https://github.com/yangchong211
  *     time  : 2017/7/6
- *     desc  : 为状态View显示隐藏监听事件
+ *     desc  : 为状态View显示隐藏监听事件，写成接口
  *     revise:
  * </pre>
  */

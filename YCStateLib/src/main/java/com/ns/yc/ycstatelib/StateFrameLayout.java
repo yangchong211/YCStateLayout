@@ -65,7 +65,7 @@ public class StateFrameLayout extends FrameLayout {
     /**
      *  存放布局集合
      */
-    private SparseArray<View> layoutSparseArray = new SparseArray();
+    private SparseArray<View> layoutSparseArray = new SparseArray<>();
 
     //private HashMap<Integer,View> map = new HashMap<>();
 
@@ -87,13 +87,22 @@ public class StateFrameLayout extends FrameLayout {
         super(context, attrs, defStyleAttr);
     }
 
-
+    /**
+     * 设置状态管理者manager
+     * 该manager主要的操作是设置不同状态view以及设置属性
+     * 而该帧布局主要操作是显示和隐藏视图，用帧布局可以较少一层视图层级
+     * 这样操作是利用了面向对象中封装类尽量保持类的单一职责，一个类尽量只做一件事情
+     * @param statusLayoutManager               manager
+     */
     public void setStatusLayoutManager(StateLayoutManager statusLayoutManager) {
         mStatusLayoutManager = statusLayoutManager;
         //添加所有的布局到帧布局
         addAllLayoutToRootLayout();
     }
 
+    /**
+     * 添加所有不同状态布局到帧布局中
+     */
     private void addAllLayoutToRootLayout() {
         if (mStatusLayoutManager.contentLayoutResId != 0) {
             addLayoutResId(mStatusLayoutManager.contentLayoutResId, StateFrameLayout.LAYOUT_CONTENT_ID);
@@ -166,6 +175,11 @@ public class StateFrameLayout extends FrameLayout {
         }
     }
 
+    /**
+     * 空数据并且设置页面简单数据
+     * @param iconImage                 空页面图片
+     * @param textTip                   文字
+     */
     private void emptyDataViewAddData(int iconImage, String textTip) {
         if (iconImage == 0 && TextUtils.isEmpty(textTip)) {
             return;
@@ -182,6 +196,10 @@ public class StateFrameLayout extends FrameLayout {
         }
     }
 
+    /**
+     * 展示空页面
+     * @param objects                   object
+     */
     public void showLayoutEmptyData(Object... objects) {
         if (inflateLayout(LAYOUT_EMPTY_DATA_ID)) {
             showHideViewById(LAYOUT_EMPTY_DATA_ID);
@@ -229,16 +247,19 @@ public class StateFrameLayout extends FrameLayout {
      * @param id                    id值
      */
     private void showHideViewById(int id) {
+        //这个需要遍历集合中数据，然后切换显示和隐藏
         for (int i = 0; i < layoutSparseArray.size(); i++) {
             int key = layoutSparseArray.keyAt(i);
             View valueView = layoutSparseArray.valueAt(i);
             //显示该view
             if(key == id) {
+                //显示该视图
                 valueView.setVisibility(View.VISIBLE);
                 if(mStatusLayoutManager.onShowHideViewListener != null) {
                     mStatusLayoutManager.onShowHideViewListener.onShowView(valueView, key);
                 }
             } else {
+                //隐藏该视图
                 if(valueView.getVisibility() != View.GONE) {
                     valueView.setVisibility(View.GONE);
                     if(mStatusLayoutManager.onShowHideViewListener != null) {
@@ -252,8 +273,9 @@ public class StateFrameLayout extends FrameLayout {
 
     /**
      * 主要是显示ViewStub布局，比如网络异常，加载异常以及空数据等页面
+     * 注意该方法中只有当切换到这些页面的时候，才会将ViewStub视图给inflate出来，之后才会走视图绘制的三大流程
      * @param id                        布局id
-     * @return
+     * @return                          是否inflate出视图
      */
     private boolean inflateLayout(int id) {
         boolean isShow = true;
@@ -261,6 +283,7 @@ public class StateFrameLayout extends FrameLayout {
             return isShow;
         }
         switch (id) {
+                //网络异常
             case LAYOUT_NETWORK_ERROR_ID:
                 if (mStatusLayoutManager.netWorkErrorVs != null) {
                     View view = mStatusLayoutManager.netWorkErrorVs.inflate();
@@ -271,6 +294,7 @@ public class StateFrameLayout extends FrameLayout {
                     isShow = false;
                 }
                 break;
+                //加载异常
             case LAYOUT_ERROR_ID:
                 if (mStatusLayoutManager.errorVs != null) {
                     View view = mStatusLayoutManager.errorVs.inflate();
@@ -284,6 +308,7 @@ public class StateFrameLayout extends FrameLayout {
                     isShow = false;
                 }
                 break;
+                //空数据
             case LAYOUT_EMPTY_DATA_ID:
                 if (mStatusLayoutManager.emptyDataVs != null) {
                     View view = mStatusLayoutManager.emptyDataVs.inflate();
