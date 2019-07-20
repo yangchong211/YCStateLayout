@@ -33,8 +33,11 @@
 
 
 #### 0.4 项目设计思路
-- StateFrameLayout是继承FrameLayout自定义布局
-
+- StateFrameLayout是继承FrameLayout自定义布局，主要是存放不同的视图，以及隐藏和展示视图操作
+- StateLayoutManager是状态管理器，主要是让开发者设置不同状态视图的view，以及切换视图状态操作
+    - 几种异常状态要用ViewStub，因为在界面状态切换中loading和内容View都是一直需要加载显示的，但是其他的3个只有在没数据或者网络异常的情况下才会加载显示，所以用ViewStub来加载他们可以提高性能。
+- OnRetryListener，为接口，主要是重试作用。比如加载失败了，点击视图需要重新刷新接口，则可以用到这个。开发者也可以自己设置点击事件
+- 关于状态视图切换方案，目前市场有多种做法，具体可以看我的这篇博客：https://juejin.im/post/5d2f014d6fb9a07ea648a959
 
 
 ### 1.关于Android界面切换状态的介绍

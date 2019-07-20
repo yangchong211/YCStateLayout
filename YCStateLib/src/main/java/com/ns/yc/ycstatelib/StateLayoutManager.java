@@ -53,6 +53,7 @@ public class StateLayoutManager {
     final StateFrameLayout rootFrameLayout;
     final OnShowHideViewListener onShowHideViewListener;
     final OnRetryListener onRetryListener;
+    final OnNetworkListener onNetworkListener;
 
     public static Builder newBuilder(Context context) {
         return new Builder(context);
@@ -71,6 +72,7 @@ public class StateLayoutManager {
         this.onShowHideViewListener = builder.onShowHideViewListener;
         this.retryViewId = builder.retryViewId;
         this.onRetryListener = builder.onRetryListener;
+        this.onNetworkListener = builder.onNetworkListener;
         this.emptyDataIconImageId = builder.emptyDataIconImageId;
         this.emptyDataTextTipId = builder.emptyDataTextTipId;
         this.errorIconImageId = builder.errorIconImageId;
@@ -109,6 +111,8 @@ public class StateLayoutManager {
     public void showEmptyData(int iconImage, String textTip) {
         rootFrameLayout.showEmptyData(iconImage, textTip);
     }
+
+
 
     /**
      * 显示空数据
@@ -180,6 +184,7 @@ public class StateLayoutManager {
         private AbsViewStubLayout emptyDataLayout;
         private OnShowHideViewListener onShowHideViewListener;
         private OnRetryListener onRetryListener;
+        private OnNetworkListener onNetworkListener;
 
         Builder(Context context) {
             this.context = context;
@@ -228,12 +233,22 @@ public class StateLayoutManager {
             return this;
         }
 
+        /**
+         * 自定义异常布局
+         * @param errorLayout                   error
+         * @return
+         */
         public Builder errorLayout(AbsViewStubLayout errorLayout) {
             this.errorLayout = errorLayout;
             this.errorVs = errorLayout.getLayoutVs();
             return this;
         }
 
+        /**
+         * 自定义空数据布局
+         * @param emptyDataLayout              emptyDataLayout
+         * @return
+         */
         public Builder emptyDataLayout(AbsViewStubLayout emptyDataLayout) {
             this.emptyDataLayout = emptyDataLayout;
             this.emptyDataVs = emptyDataLayout.getLayoutVs();
@@ -299,6 +314,17 @@ public class StateLayoutManager {
             this.onRetryListener = onRetryListener;
             return this;
         }
+
+        /**
+         * 为重试加载按钮的监听事件
+         * @param onNetworkListener           listener
+         * @return
+         */
+        public Builder onNetworkListener(OnNetworkListener onNetworkListener) {
+            this.onNetworkListener = onNetworkListener;
+            return this;
+        }
+
 
         /**
          * 创建对象

@@ -2,6 +2,7 @@ package com.pedaily.yc.ycstatelayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.ns.yc.ycstatelib.OnNetworkListener;
+import com.ns.yc.ycstatelib.OnRetryListener;
 import com.ns.yc.ycstatelib.StateLayoutManager;
 
 import java.util.ArrayList;
@@ -44,6 +47,18 @@ public class MainActivity extends BaseActivity {
                 .errorView(R.layout.activity_error)
                 .loadingView(R.layout.activity_loading)
                 .netWorkErrorView(R.layout.activity_networkerror)
+                .onRetryListener(new OnRetryListener() {
+                    @Override
+                    public void onRetry() {
+                        showContent();
+                    }
+                })
+                .onNetworkListener(new OnNetworkListener() {
+                    @Override
+                    public void onNetwork() {
+                        showLoading();
+                    }
+                })
                 .build();
     }
 
@@ -139,15 +154,6 @@ public class MainActivity extends BaseActivity {
     private void initEmptyDataView() {
 
         statusLayoutManager.showEmptyData();
-        LinearLayout ll_empty_data = (LinearLayout) findViewById(R.id.ll_empty_data);
-        ll_empty_data.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                initData();
-                adapter.notifyDataSetChanged();
-                showContent();
-            }
-        });
     }
 
     /**
@@ -155,15 +161,6 @@ public class MainActivity extends BaseActivity {
      */
     private void initErrorDataView() {
         statusLayoutManager.showError();
-        LinearLayout ll_error_data = (LinearLayout) findViewById(R.id.ll_error_data);
-        ll_error_data.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                initData();
-                adapter.notifyDataSetChanged();
-                showContent();
-            }
-        });
     }
 
     /**
@@ -171,14 +168,6 @@ public class MainActivity extends BaseActivity {
      */
     private void initSettingNetwork() {
         statusLayoutManager.showNetWorkError();
-        LinearLayout ll_set_network = (LinearLayout) findViewById(R.id.ll_set_network);
-        ll_set_network.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent("android.settings.WIRELESS_SETTINGS");
-                startActivity(intent);
-            }
-        });
     }
 
 }

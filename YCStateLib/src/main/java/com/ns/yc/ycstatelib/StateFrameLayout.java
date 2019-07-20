@@ -19,6 +19,7 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -274,6 +275,9 @@ public class StateFrameLayout extends FrameLayout {
     /**
      * 主要是显示ViewStub布局，比如网络异常，加载异常以及空数据等页面
      * 注意该方法中只有当切换到这些页面的时候，才会将ViewStub视图给inflate出来，之后才会走视图绘制的三大流程
+     * 方法里面通过id判断来执行不同的代码，首先判断ViewStub是否为空，如果为空就代表没有添加这个View就返回false，
+     * 不为空就加载View并且添加到集合当中，然后调用showHideViewById方法显示隐藏View，
+     * retryLoad方法是给重试按钮添加事件
      * @param id                        布局id
      * @return                          是否inflate出视图
      */
@@ -287,7 +291,13 @@ public class StateFrameLayout extends FrameLayout {
             case LAYOUT_NETWORK_ERROR_ID:
                 if (mStatusLayoutManager.netWorkErrorVs != null) {
                     View view = mStatusLayoutManager.netWorkErrorVs.inflate();
-                    retryLoad(view, mStatusLayoutManager.netWorkErrorRetryViewId);
+                    view.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Log.i("重试加载","网络异常");
+                            mStatusLayoutManager.onNetworkListener.onNetwork();
+                        }
+                    });
                     layoutSparseArray.put(id, view);
                     isShow = true;
                 } else {
@@ -301,7 +311,12 @@ public class StateFrameLayout extends FrameLayout {
                     if (mStatusLayoutManager.errorLayout != null) {
                         mStatusLayoutManager.errorLayout.setView(view);
                     }
-                    retryLoad(view, mStatusLayoutManager.errorRetryViewId);
+                    view.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mStatusLayoutManager.onRetryListener.onRetry();
+                        }
+                    });
                     layoutSparseArray.put(id, view);
                     isShow = true;
                 } else {
@@ -315,7 +330,12 @@ public class StateFrameLayout extends FrameLayout {
                     if (mStatusLayoutManager.emptyDataLayout != null) {
                         mStatusLayoutManager.emptyDataLayout.setView(view);
                     }
-                    retryLoad(view, mStatusLayoutManager.emptyDataRetryViewId);
+                    view.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mStatusLayoutManager.onRetryListener.onRetry();
+                        }
+                    });
                     layoutSparseArray.put(id, view);
                     isShow = true;
                 } else {
@@ -328,22 +348,5 @@ public class StateFrameLayout extends FrameLayout {
         return isShow;
     }
 
-
-    /**
-     *  重试加载
-     */
-    private void retryLoad(View view, int id) {
-        View retryView = view.findViewById(mStatusLayoutManager.retryViewId != 0 ?
-                mStatusLayoutManager.retryViewId : id);
-        if (retryView == null || mStatusLayoutManager.onRetryListener == null) {
-            return;
-        }
-        retryView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mStatusLayoutManager.onRetryListener.onRetry();
-            }
-        });
-    }
 }
 
