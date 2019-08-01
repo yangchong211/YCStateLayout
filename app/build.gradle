@@ -21,8 +21,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.0.0'
+    implementation 'com.android.support:design:27.0.0'
+    implementation 'com.android.support:recyclerview-v7:27.0.0'
     implementation project(':YCStateLib')
 //    implementation 'cn.yc:YCStateLib:1.1.6'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
+
 }

@@ -1,4 +1,4 @@
-package com.pedaily.yc.ycstatelayout;
+package com.pedaily.yc.ycstatelayout.base;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 import com.ns.yc.ycstatelib.StateLayoutManager;
+import com.pedaily.yc.ycstatelayout.R;
 
 
 /**

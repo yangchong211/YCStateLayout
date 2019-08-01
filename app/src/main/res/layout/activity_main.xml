@@ -38,12 +38,12 @@
             android:id="@+id/btn_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试页面1"/>
+            android:text="测试fragment1"/>
         <Button
             android:id="@+id/btn_test2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试页面2"/>
+            android:text="测试fragment2"/>
         <Button
             android:id="@+id/btn_test3"
             android:layout_width="wrap_content"

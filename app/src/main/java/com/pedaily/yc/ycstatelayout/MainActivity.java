@@ -1,19 +1,20 @@
 package com.pedaily.yc.ycstatelayout;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
 import com.ns.yc.ycstatelib.OnNetworkListener;
 import com.ns.yc.ycstatelib.OnRetryListener;
 import com.ns.yc.ycstatelib.StateLayoutManager;
+import com.pedaily.yc.ycstatelayout.activity.Test1Activity;
+import com.pedaily.yc.ycstatelayout.activity.Test2Activity;
+import com.pedaily.yc.ycstatelayout.activity.Test3Activity;
+import com.pedaily.yc.ycstatelayout.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +31,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
-    private RecyclerView recyclerView;
     private List<String> lists = new ArrayList<>();
-    private MainAdapter adapter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     protected void initStatusLayout() {
@@ -50,12 +44,14 @@ public class MainActivity extends BaseActivity {
                 .onRetryListener(new OnRetryListener() {
                     @Override
                     public void onRetry() {
+                        //点击重试
                         showContent();
                     }
                 })
                 .onNetworkListener(new OnNetworkListener() {
                     @Override
                     public void onNetwork() {
+                        //网络异常，点击重试
                         showLoading();
                     }
                 })
@@ -98,36 +94,27 @@ public class MainActivity extends BaseActivity {
         btn_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,TestActivity.class));
+                startActivity(new Intent(MainActivity.this, Test1Activity.class));
             }
         });
         btn_test2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Test2Activity.class));
+                startActivity(new Intent(MainActivity.this, Test2Activity.class));
             }
         });
         btn_test3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Test3Activity.class));
+                startActivity(new Intent(MainActivity.this, Test3Activity.class));
             }
         });
     }
 
     private void initRecycleView() {
-//        showContent();
-//        showEmptyData();
-//        showError();
-//        showLoading();
-//        showNetWorkError();
-//        statusLayoutManager.showLoading();
-//        statusLayoutManager.showContent();
-
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycleView);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MainAdapter(lists,this);
+        MainAdapter adapter = new MainAdapter(lists, this);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new HhItemClickListener() {
             @Override
@@ -152,7 +139,6 @@ public class MainActivity extends BaseActivity {
      * 点击重新刷新数据
      */
     private void initEmptyDataView() {
-
         statusLayoutManager.showEmptyData();
     }
 

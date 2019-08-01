@@ -1,4 +1,4 @@
-package com.pedaily.yc.ycstatelayout;
+package com.pedaily.yc.ycstatelayout.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,6 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ns.yc.ycstatelib.StateLayoutManager;
+import com.pedaily.yc.ycstatelayout.HhItemClickListener;
+import com.pedaily.yc.ycstatelayout.MainAdapter;
+import com.pedaily.yc.ycstatelayout.R;
 
 import java.util.ArrayList;
 import java.util.List;

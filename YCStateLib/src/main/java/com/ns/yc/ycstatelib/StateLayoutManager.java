@@ -59,7 +59,11 @@ public class StateLayoutManager {
         return new Builder(context);
     }
 
-    private StateLayoutManager(Builder builder) {
+    public static Builder newBuilder(Context context , boolean wrapContent) {
+        return new Builder(context,wrapContent);
+    }
+
+    private StateLayoutManager(Builder builder , boolean wrapContent) {
         this.context = builder.context;
         this.loadingLayoutResId = builder.loadingLayoutResId;
         this.netWorkErrorVs = builder.netWorkErrorVs;
@@ -82,8 +86,15 @@ public class StateLayoutManager {
 
         //创建帧布局
         rootFrameLayout = new StateFrameLayout(this.context);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams layoutParams ;
+        //是否包裹内容
+        if (wrapContent){
+            layoutParams = new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }else {
+            layoutParams = new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        }
         rootFrameLayout.setLayoutParams(layoutParams);
 
         //设置状态管理器
@@ -167,6 +178,10 @@ public class StateLayoutManager {
     public static final class Builder {
 
         private Context context;
+        /**
+         * StateFrameLayout布局创建时，是否包裹内容，默认是MATCH_PARENT
+         */
+        private boolean wrapContent = false;
         private int loadingLayoutResId;
         private int contentLayoutResId;
         private ViewStub netWorkErrorVs;
@@ -188,6 +203,12 @@ public class StateLayoutManager {
 
         Builder(Context context) {
             this.context = context;
+        }
+
+
+        Builder(Context context , boolean wrapContent) {
+            this.context = context;
+            this.wrapContent = wrapContent;
         }
 
         /**
@@ -331,7 +352,7 @@ public class StateLayoutManager {
          * @return
          */
         public StateLayoutManager build() {
-            return new StateLayoutManager(this);
+            return new StateLayoutManager(this, wrapContent);
         }
     }
 

@@ -3,14 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rl_no_data"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#fff2f2f2"
     android:clickable="true">
 
     <LinearLayout
         android:id="@+id/ll_empty_data"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp"
         android:orientation="vertical"
         android:layout_centerInParent="true">
         <ImageView
