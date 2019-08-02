@@ -16,6 +16,7 @@ limitations under the License.
 package com.ns.yc.ycstatelib;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,6 +97,8 @@ public class StateLayoutManager {
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         }
         rootFrameLayout.setLayoutParams(layoutParams);
+        //设置为白色
+        rootFrameLayout.setBackgroundColor(Color.WHITE);
 
         //设置状态管理器
         rootFrameLayout.setStatusLayoutManager(this);
@@ -106,7 +109,9 @@ public class StateLayoutManager {
      * 显示loading
      */
     public void showLoading() {
-        rootFrameLayout.showLoading();
+        if (!rootFrameLayout.isLoading()){
+            rootFrameLayout.showLoading();
+        }
     }
 
     /**

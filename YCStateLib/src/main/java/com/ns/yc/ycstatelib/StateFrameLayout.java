@@ -130,6 +130,23 @@ public class StateFrameLayout extends FrameLayout {
     }
 
     /**
+     * 判断是否正在loading中
+     * @return                      true 表示loading正在加载中
+     */
+    public boolean isLoading(){
+        View view = layoutSparseArray.get(LAYOUT_LOADING_ID);
+        if (view != null) {
+            if (view.getVisibility() == View.VISIBLE){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
      *  显示loading
      */
     public void showLoading() {
