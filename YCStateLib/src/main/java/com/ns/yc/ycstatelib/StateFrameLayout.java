@@ -129,6 +129,7 @@ public class StateFrameLayout extends FrameLayout {
         addView(resView);
     }
 
+
     /**
      * 判断是否正在loading中
      * @return                      true 表示loading正在加载中

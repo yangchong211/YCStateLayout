@@ -104,12 +104,19 @@ public class StateLayoutManager {
         rootFrameLayout.setStatusLayoutManager(this);
     }
 
+    /**
+     * 判断是否在showLoading中
+     * @return
+     */
+    public boolean isShowLoading(){
+        return rootFrameLayout.isLoading();
+    }
 
     /**
      * 显示loading
      */
     public void showLoading() {
-        if (!rootFrameLayout.isLoading()){
+        if (!isShowLoading()){
             rootFrameLayout.showLoading();
         }
     }
