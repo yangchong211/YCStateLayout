@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.pedaily.yc.ycstatelayout.R;
 import com.pedaily.yc.ycstatelayout.base.BasePagerAdapter;
 import com.pedaily.yc.ycstatelayout.fragment.Test1Fragment;
+import com.pedaily.yc.ycstatelayout.fragment.Test2Fragment;
+import com.pedaily.yc.ycstatelayout.fragment.Test3Fragment;
 
 import java.util.ArrayList;
 
@@ -40,14 +42,14 @@ public class Test1Activity extends AppCompatActivity {
     private void initTabLayout() {
         ArrayList<String> mTitleList = new ArrayList<>();
         ArrayList<Fragment> mFragments = new ArrayList<>();
-        mTitleList.add("综合");
+        mTitleList.add("逗比");
         mTitleList.add("文学");
         mTitleList.add("文化");
         mTitleList.add("生活");
         mTitleList.add("励志");
+        mFragments.add(new Test3Fragment());
         mFragments.add(new Test1Fragment());
-        mFragments.add(new Test1Fragment());
-        mFragments.add(new Test1Fragment());
+        mFragments.add(new Test3Fragment());
         mFragments.add(new Test1Fragment());
         mFragments.add(new Test1Fragment());
 

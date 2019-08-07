@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.pedaily.yc.ycstatelayout.R;
 import com.pedaily.yc.ycstatelayout.base.BasePagerAdapter;
 import com.pedaily.yc.ycstatelayout.fragment.Test2Fragment;
+import com.pedaily.yc.ycstatelayout.fragment.Test3Fragment;
 
 import java.util.ArrayList;
 
