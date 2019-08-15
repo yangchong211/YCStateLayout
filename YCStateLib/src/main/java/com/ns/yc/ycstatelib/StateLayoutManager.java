@@ -51,7 +51,7 @@ public class StateLayoutManager {
     final AbsViewStubLayout errorLayout;
     final AbsViewStubLayout emptyDataLayout;
 
-    final StateFrameLayout rootFrameLayout;
+    private final StateFrameLayout rootFrameLayout;
     final OnShowHideViewListener onShowHideViewListener;
     final OnRetryListener onRetryListener;
     final OnNetworkListener onNetworkListener;

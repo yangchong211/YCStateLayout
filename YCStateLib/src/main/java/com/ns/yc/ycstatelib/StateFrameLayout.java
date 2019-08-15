@@ -308,6 +308,7 @@ public class StateFrameLayout extends FrameLayout {
                 //网络异常
             case LAYOUT_NETWORK_ERROR_ID:
                 if (mStatusLayoutManager.netWorkErrorVs != null) {
+                    //只有当展示的时候，才将ViewStub视图给inflate出来
                     View view = mStatusLayoutManager.netWorkErrorVs.inflate();
                     view.setOnClickListener(new OnClickListener() {
                         @Override
@@ -325,6 +326,7 @@ public class StateFrameLayout extends FrameLayout {
                 //加载异常
             case LAYOUT_ERROR_ID:
                 if (mStatusLayoutManager.errorVs != null) {
+                    //只有当展示的时候，才将ViewStub视图给inflate出来
                     View view = mStatusLayoutManager.errorVs.inflate();
                     if (mStatusLayoutManager.errorLayout != null) {
                         mStatusLayoutManager.errorLayout.setView(view);
@@ -344,6 +346,7 @@ public class StateFrameLayout extends FrameLayout {
                 //空数据
             case LAYOUT_EMPTY_DATA_ID:
                 if (mStatusLayoutManager.emptyDataVs != null) {
+                    //只有当展示的时候，才将ViewStub视图给inflate出来
                     View view = mStatusLayoutManager.emptyDataVs.inflate();
                     if (mStatusLayoutManager.emptyDataLayout != null) {
                         mStatusLayoutManager.emptyDataLayout.setView(view);
