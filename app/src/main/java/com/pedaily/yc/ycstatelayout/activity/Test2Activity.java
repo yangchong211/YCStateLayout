@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.pedaily.yc.ycstatelayout.R;
 import com.pedaily.yc.ycstatelayout.base.BasePagerAdapter;
+import com.pedaily.yc.ycstatelayout.fragment.Test1Fragment;
 import com.pedaily.yc.ycstatelayout.fragment.Test2Fragment;
 import com.pedaily.yc.ycstatelayout.fragment.Test3Fragment;
 
@@ -47,9 +48,9 @@ public class Test2Activity extends AppCompatActivity {
         mTitleList.add("生活");
         mTitleList.add("励志");
         mFragments.add(new Test2Fragment());
+        mFragments.add(new Test1Fragment());
         mFragments.add(new Test2Fragment());
-        mFragments.add(new Test2Fragment());
-        mFragments.add(new Test2Fragment());
+        mFragments.add(new Test3Fragment());
         mFragments.add(new Test2Fragment());
 
         /*

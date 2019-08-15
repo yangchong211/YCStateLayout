@@ -50,7 +50,7 @@ public class Test1Activity extends AppCompatActivity {
         mFragments.add(new Test3Fragment());
         mFragments.add(new Test1Fragment());
         mFragments.add(new Test3Fragment());
-        mFragments.add(new Test1Fragment());
+        mFragments.add(new Test2Fragment());
         mFragments.add(new Test1Fragment());
 
         /*
