@@ -31,7 +31,7 @@ public class StateViewLayout {
     private static boolean DEBUG = false;
 
     /**
-     * Provides view to show current loading status
+     * 提供显示当前加载状态的视图
      */
     public interface Adapter {
         /**
@@ -53,7 +53,12 @@ public class StateViewLayout {
         DEBUG = debug;
     }
 
-    private StateViewLayout() { }
+    /**
+     * 构造方法私有话，避免通过new进行初始化
+     */
+    private StateViewLayout() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
 
     /**
      * Create a new StateViewLayout different from the default one
@@ -61,6 +66,7 @@ public class StateViewLayout {
      * @return StateViewLayout
      */
     public static StateViewLayout from(Adapter adapter) {
+        checkAdapter(adapter);
         StateViewLayout stateViewLayout = new StateViewLayout();
         stateViewLayout.mAdapter = adapter;
         return stateViewLayout;
@@ -86,6 +92,7 @@ public class StateViewLayout {
      * @param adapter adapter to create all status views
      */
     public static void initDefault(Adapter adapter) {
+        checkAdapter(adapter);
         getDefault().mAdapter = adapter;
     }
 
@@ -123,11 +130,22 @@ public class StateViewLayout {
     }
 
     /**
+     * 检查是否设置了自定义adapter，必须先初始化
+     * @param adapter                       adapter
+     */
+    private static void checkAdapter(Adapter adapter){
+        if (adapter == null){
+            throw new NullPointerException("please set initDefault at first");
+        }
+    }
+
+    /**
      * StateViewLayout holder<br>
      * create by {@link StateViewLayout#wrap(Activity)} or {@link StateViewLayout#wrap(View)}<br>
      * the core API for showing all status view
      */
     public static class Holder {
+
         private Adapter mAdapter;
         private Context mContext;
         private Runnable mRetryTask;
@@ -220,7 +238,7 @@ public class StateViewLayout {
                         lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
                     }
                 } else if (mWrapper.indexOfChild(view) != mWrapper.getChildCount() - 1) {
-                    // make sure loading status view at the front
+                    // 确保加载状态视图在前面
                     view.bringToFront();
                 }
                 mCurStatusView = view;

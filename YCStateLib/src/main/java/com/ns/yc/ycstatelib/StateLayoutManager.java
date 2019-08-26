@@ -127,6 +127,13 @@ public class StateLayoutManager {
     }
 
     /**
+     * 显示loading
+     */
+    public void goneLoading() {
+        rootFrameLayout.goneLoading();
+    }
+
+    /**
      * 显示内容
      */
     public void showContent() {

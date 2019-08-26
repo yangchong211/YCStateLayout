@@ -129,6 +129,25 @@ public class StateFrameLayout extends FrameLayout {
         addView(resView);
     }
 
+    /**
+     * 关闭showLoading
+     * @return
+     */
+    public boolean goneLoading(){
+        if (layoutSparseArray.get(LAYOUT_LOADING_ID) != null) {
+            View view = layoutSparseArray.get(LAYOUT_LOADING_ID);
+            if (view.getVisibility() == View.VISIBLE){
+                view.setVisibility(View.GONE);
+                return true;
+            }else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+
 
     /**
      * 判断是否正在loading中
