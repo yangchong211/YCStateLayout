@@ -64,6 +64,11 @@ public class StateLayoutManager {
         return new Builder(context,wrapContent);
     }
 
+    /**
+     * 复杂构造对象，使用builder模式
+     * @param builder                       builder
+     * @param wrapContent                   是否包裹内容
+     */
     private StateLayoutManager(Builder builder , boolean wrapContent) {
         this.context = builder.context;
         this.loadingLayoutResId = builder.loadingLayoutResId;
@@ -288,16 +293,31 @@ public class StateLayoutManager {
             return this;
         }
 
+        /**
+         * 自定义网络异常布局
+         * @param netWorkErrorRetryViewId       layoutId
+         * @return
+         */
         public Builder netWorkErrorRetryViewId(@LayoutRes int netWorkErrorRetryViewId) {
             this.netWorkErrorRetryViewId = netWorkErrorRetryViewId;
             return this;
         }
 
+        /**
+         * 自定义空数据异常布局
+         * @param emptyDataRetryViewId          layoutId
+         * @return
+         */
         public Builder emptyDataRetryViewId(@LayoutRes int emptyDataRetryViewId) {
             this.emptyDataRetryViewId = emptyDataRetryViewId;
             return this;
         }
 
+        /**
+         * 自定义重新刷新布局
+         * @param errorRetryViewId              layoutId
+         * @return
+         */
         public Builder errorRetryViewId(@LayoutRes int errorRetryViewId) {
             this.errorRetryViewId = errorRetryViewId;
             return this;
