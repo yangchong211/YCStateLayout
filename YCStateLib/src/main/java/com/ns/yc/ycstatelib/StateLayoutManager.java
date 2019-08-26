@@ -29,7 +29,7 @@ import android.view.ViewStub;
  *     blog  : https://github.com/yangchong211
  *     time  : 2017/7/6
  *     desc  : 状态管理器
- *     revise:
+ *     revise: 具体demo参考：https://github.com/yangchong211/YCStateLayout
  * </pre>
  */
 public class StateLayoutManager {
@@ -127,7 +127,7 @@ public class StateLayoutManager {
     }
 
     /**
-     * 显示loading
+     * 隐藏loading
      */
     public void goneLoading() {
         rootFrameLayout.goneLoading();

@@ -54,11 +54,9 @@ public class StateViewLayout {
     }
 
     /**
-     * 构造方法私有话，避免通过new进行初始化
+     * 构造方法私有话，避免外部通过new进行初始化
      */
-    private StateViewLayout() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
-    }
+    private StateViewLayout() { }
 
     /**
      * Create a new StateViewLayout different from the default one
