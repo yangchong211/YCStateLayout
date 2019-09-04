@@ -125,6 +125,10 @@ public class StateFrameLayout extends FrameLayout {
 
     private void addLayoutResId(@LayoutRes int layoutResId, int id) {
         View resView = LayoutInflater.from(mStatusLayoutManager.context).inflate(layoutResId, null);
+        if (id == StateFrameLayout.LAYOUT_LOADING_ID){
+            //如果是loading，则设置不可点击
+            resView.setOnClickListener(null);
+        }
         layoutSparseArray.put(id, resView);
         addView(resView);
     }
