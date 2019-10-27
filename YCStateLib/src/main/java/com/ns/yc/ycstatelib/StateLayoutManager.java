@@ -305,7 +305,7 @@ public class StateLayoutManager {
          * @param netWorkErrorRetryViewId       layoutId
          * @return
          */
-        public Builder netWorkErrorRetryViewId(@LayoutRes int netWorkErrorRetryViewId) {
+        public Builder netWorkErrorRetryViewId(int netWorkErrorRetryViewId) {
             this.netWorkErrorRetryViewId = netWorkErrorRetryViewId;
             return this;
         }
@@ -315,7 +315,7 @@ public class StateLayoutManager {
          * @param emptyDataRetryViewId          layoutId
          * @return
          */
-        public Builder emptyDataRetryViewId(@LayoutRes int emptyDataRetryViewId) {
+        public Builder emptyDataRetryViewId(int emptyDataRetryViewId) {
             this.emptyDataRetryViewId = emptyDataRetryViewId;
             return this;
         }
@@ -325,32 +325,32 @@ public class StateLayoutManager {
          * @param errorRetryViewId              layoutId
          * @return
          */
-        public Builder errorRetryViewId(@LayoutRes int errorRetryViewId) {
+        public Builder errorRetryViewId(int errorRetryViewId) {
             this.errorRetryViewId = errorRetryViewId;
             return this;
         }
 
-        public Builder retryViewId(@LayoutRes int retryViewId) {
+        public Builder retryViewId(int retryViewId) {
             this.retryViewId = retryViewId;
             return this;
         }
 
-        public Builder emptyDataIconImageId(@LayoutRes int emptyDataIconImageId) {
+        public Builder emptyDataIconImageId(int emptyDataIconImageId) {
             this.emptyDataIconImageId = emptyDataIconImageId;
             return this;
         }
 
-        public Builder emptyDataTextTipId(@LayoutRes int emptyDataTextTipId) {
+        public Builder emptyDataTextTipId(int emptyDataTextTipId) {
             this.emptyDataTextTipId = emptyDataTextTipId;
             return this;
         }
 
-        public Builder errorIconImageId(@LayoutRes int errorIconImageId) {
+        public Builder errorIconImageId(int errorIconImageId) {
             this.errorIconImageId = errorIconImageId;
             return this;
         }
 
-        public Builder errorTextTipId(@LayoutRes int errorTextTipId) {
+        public Builder errorTextTipId(int errorTextTipId) {
             this.errorTextTipId = errorTextTipId;
             return this;
         }

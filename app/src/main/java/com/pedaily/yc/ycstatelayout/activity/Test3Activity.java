@@ -11,7 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ns.yc.ycstatelib.StateLayoutManager;
@@ -152,12 +154,14 @@ public class Test3Activity extends AppCompatActivity implements View.OnClickList
     private void initEmptyDataView() {
         statusLayoutManager.showEmptyData();
         LinearLayout ll_empty_data = (LinearLayout) findViewById(R.id.ll_empty_data);
+        ImageView ivImage  = findViewById(R.id.iv_image);
+        TextView tvContent = findViewById(R.id.tv_content);
+        ivImage.setBackgroundResource(R.drawable.icon_failed);
+        tvContent.setText("自定义内容");
         ll_empty_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initData();
-                adapter.notifyDataSetChanged();
-                showContent();
+
             }
         });
     }

@@ -232,7 +232,6 @@ public class StateFrameLayout extends FrameLayout {
         if (iconImageView != null && iconImageView instanceof ImageView) {
             ((ImageView) iconImageView).setImageResource(iconImage);
         }
-
         if (textView != null && textView instanceof TextView) {
             ((TextView) textView).setText(textTip);
         }
@@ -258,12 +257,11 @@ public class StateFrameLayout extends FrameLayout {
             return;
         }
         View errorView = layoutSparseArray.get(LAYOUT_ERROR_ID);
-        View iconImageView = errorView.findViewById(mStatusLayoutManager.emptyDataIconImageId);
-        View textView = errorView.findViewById(mStatusLayoutManager.emptyDataTextTipId);
+        View iconImageView = errorView.findViewById(mStatusLayoutManager.errorIconImageId);
+        View textView = errorView.findViewById(mStatusLayoutManager.errorTextTipId);
         if (iconImageView != null && iconImageView instanceof ImageView) {
             ((ImageView) iconImageView).setImageResource(iconImage);
         }
-
         if (textView != null && textView instanceof TextView) {
             ((TextView) textView).setText(textTip);
         }

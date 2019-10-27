@@ -41,6 +41,14 @@ public class MainActivity extends BaseActivity {
                 .errorView(R.layout.activity_error)
                 .loadingView(R.layout.activity_loading)
                 .netWorkErrorView(R.layout.activity_networkerror)
+                //设置空数据页面图片控件id
+                .emptyDataIconImageId(R.id.image)
+                //设置空数据页面文本控件id
+                .emptyDataTextTipId(R.id.tv_content)
+                //设置异常页面图片id
+                .errorIconImageId(R.id.image)
+                //设置异常页面文本id
+                .errorTextTipId(R.id.tv_content)
                 .onRetryListener(new OnRetryListener() {
                     @Override
                     public void onRetry() {
@@ -139,14 +147,16 @@ public class MainActivity extends BaseActivity {
      * 点击重新刷新数据
      */
     private void initEmptyDataView() {
-        statusLayoutManager.showEmptyData();
+        //statusLayoutManager.showEmptyData();
+        statusLayoutManager.showEmptyData(R.drawable.icon_empty,"逗比，没有数据");
     }
 
     /**
      * 点击重新刷新
      */
     private void initErrorDataView() {
-        statusLayoutManager.showError();
+        //statusLayoutManager.showError();
+        statusLayoutManager.showError(R.drawable.icon_network_error,"逗比，错误数据");
     }
 
     /**
