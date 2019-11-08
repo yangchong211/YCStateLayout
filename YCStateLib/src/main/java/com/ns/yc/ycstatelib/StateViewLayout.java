@@ -17,6 +17,7 @@ import android.widget.FrameLayout.LayoutParams;
  *     time  : 2017/7/6
  *     desc  : 自定义状态管理，用于list条目中
  *     revise: 借鉴大神齐翔开源库
+ *             参考链接：https://github.com/luckybilly/Gloading
  * </pre>
  */
 public class StateViewLayout {

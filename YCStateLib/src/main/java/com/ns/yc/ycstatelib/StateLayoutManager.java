@@ -147,8 +147,6 @@ public class StateLayoutManager {
         rootFrameLayout.showEmptyData(iconImage, textTip);
     }
 
-
-
     /**
      * 显示空数据
      */

@@ -19,7 +19,7 @@
     ```
 - Then, add the library to your module build.gradle
     ```
-    implementation  'cn.yc:YCStateLib:1.2.0'
+    implementation  'cn.yc:YCStateLib:1.2.4'
     ```
 
 
@@ -68,11 +68,14 @@
         - 当页面出现网络异常页面，空页面等，页面会有交互事件，这时候可以设置点击设置网络或者点击重新加载等等
 
 
-#### 4.3 关于该状态切换工具优点分析
-* 可以自由切换内容，空数据，异常错误，加载，网络错误等5种状态
-* 父类BaseActivity直接暴露5中状态，方便子类统一管理状态切换
-* 倘若有些页面想定制状态布局，也可以自由实现，很简单
 
+
+#### 4.3 关于该状态切换工具优点分析
+- 可以自由切换内容，空数据，异常错误，加载，网络错误等5种状态
+- 父类BaseActivity直接暴露5中状态，方便子类统一管理状态切换
+- 倘若有些页面想定制状态布局，也可以自由实现，很简单。既可以用在单独的页面，也可以放在父类中统一管理状态切换……
+- 虽然存在空数据，异常数据，没有网络等异常页面，但是加载布局不会影响性能问题，因为都是用ViewStub控件，只有在显示的时候才inflate出来……
+- 也可以用在list页面局部动态管理，比如加载瀑布流图片，每个图片会有加载loading，加载失败，加载成功等状态，也可以用该库轻松实现
 
 
 
@@ -178,23 +181,20 @@
                 .errorView(R.layout.activity_error_data)
                 .loadingView(R.layout.activity_loading_data)
                 .netWorkErrorView(R.layout.activity_networkerror)
-                .onRetryListener(new OnRetryListener() {
-                    @Override
-                    public void onRetry() {
-                        //为重试加载按钮的监听事件
-                    }
-                })
-                .onShowHideViewListener(new OnShowHideViewListener() {
-                    @Override
-                    public void onShowView(View view, int id) {
-                        //为状态View显示监听事件
-                    }
-    
-                    @Override
-                    public void onHideView(View view, int id) {
-                        //为状态View隐藏监听事件
-                    }
-                })
+                .onRetryListener(new OnRetryListener() {
+                    @Override
+                    public void onRetry() {
+                        //点击重试
+                        showContent();
+                    }
+                })
+                .onNetworkListener(new OnNetworkListener() {
+                    @Override
+                    public void onNetwork() {
+                        //网络异常，点击重试
+                        showLoading();
+                    }
+                })
                 .build();
     }
     
@@ -262,6 +262,44 @@
         });
     }
     ``` 
+- 或者对于自定义的状态页面，如果你想设置UI的变化，也可以自由实现，如下所示
+    - 注意需要设置空数据页面图片控件id，设置空数据页面文本控件id
+    ``` 
+    statusLayoutManager = StateLayoutManager.newBuilder(this)
+            .contentView(R.layout.activity_main)
+            .emptyDataView(R.layout.activity_emptydata)
+            .errorView(R.layout.activity_error)
+            .loadingView(R.layout.activity_loading)
+            .netWorkErrorView(R.layout.activity_networkerror)
+            //设置空数据页面图片控件id
+            .emptyDataIconImageId(R.id.image)
+            //设置空数据页面文本控件id
+            .emptyDataTextTipId(R.id.tv_content)
+            //设置异常页面图片id
+            .errorIconImageId(R.id.image)
+            //设置异常页面文本id
+            .errorTextTipId(R.id.tv_content)
+            .onRetryListener(new OnRetryListener() {
+                @Override
+                public void onRetry() {
+                    //点击重试
+                    showContent();
+                }
+            })
+            .onNetworkListener(new OnNetworkListener() {
+                @Override
+                public void onNetwork() {
+                    //网络异常，点击重试
+                    showLoading();
+                }
+            })
+            .build();
+            
+    
+    //如何设置
+    statusLayoutManager.showEmptyData(R.drawable.icon_empty,"逗比，没有数据");
+    statusLayoutManager.showError(R.drawable.icon_network_error,"逗比，错误数据");
+    ``` 
 
 
 ### 5.实现效果
@@ -272,13 +310,7 @@
 ![](https://github.com/yangchong211/YCStateLayout/blob/master/image/75707536091894445.jpg)
 
 
-###  6.版本更新说明
-- v1.0 更新于2017年3月28日
-- v1.1 更新于2017年12月3日
-- v1.1.5 更新于2018年4月25日
-- v1.1.6 更新于2018年11月15日，更新targetSdkVersion为27
-
-
+###  6.其他说明
 #### 关于其他内容介绍
 ![image](https://upload-images.jianshu.io/upload_images/4432347-7100c8e5a455c3ee.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 

@@ -334,7 +334,6 @@ public class StateFrameLayout extends FrameLayout {
                     view.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Log.i("重试加载","网络异常");
                             mStatusLayoutManager.onNetworkListener.onNetwork();
                         }
                     });
