@@ -19,7 +19,6 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -105,19 +104,23 @@ public class StateFrameLayout extends FrameLayout {
      * 添加所有不同状态布局到帧布局中
      */
     private void addAllLayoutToRootLayout() {
+        //将内容视图添加到布局中
         if (mStatusLayoutManager.contentLayoutResId != 0) {
             addLayoutResId(mStatusLayoutManager.contentLayoutResId, StateFrameLayout.LAYOUT_CONTENT_ID);
         }
+        //将加载loading视图添加到布局中
         if (mStatusLayoutManager.loadingLayoutResId != 0) {
             addLayoutResId(mStatusLayoutManager.loadingLayoutResId, StateFrameLayout.LAYOUT_LOADING_ID);
         }
-
+        //将空数据视图添加到布局中，注意这里是添加ViewStub，使用的时候才inflate
         if (mStatusLayoutManager.emptyDataVs != null) {
             addView(mStatusLayoutManager.emptyDataVs);
         }
+        //将加载异常视图添加到布局中，注意这里是添加ViewStub，使用的时候才inflate
         if (mStatusLayoutManager.errorVs != null) {
             addView(mStatusLayoutManager.errorVs);
         }
+        //将网络异常视图添加到布局中，注意这里是添加ViewStub，使用的时候才inflate
         if (mStatusLayoutManager.netWorkErrorVs != null) {
             addView(mStatusLayoutManager.netWorkErrorVs);
         }
@@ -150,8 +153,6 @@ public class StateFrameLayout extends FrameLayout {
             return false;
         }
     }
-
-
 
     /**
      * 判断是否正在loading中
@@ -252,6 +253,11 @@ public class StateFrameLayout extends FrameLayout {
         }
     }
 
+    /**
+     * 展示加载异常页面
+     * @param iconImage                 image图片
+     * @param textTip                   文案
+     */
     private void errorViewAddData(int iconImage, String textTip) {
         if (iconImage == 0 && TextUtils.isEmpty(textTip)) {
             return;

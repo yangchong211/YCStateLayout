@@ -328,6 +328,7 @@ public class StateLayoutManager {
             return this;
         }
 
+
         public Builder retryViewId(int retryViewId) {
             this.retryViewId = retryViewId;
             return this;
@@ -382,7 +383,6 @@ public class StateLayoutManager {
             this.onNetworkListener = onNetworkListener;
             return this;
         }
-
 
         /**
          * 创建对象

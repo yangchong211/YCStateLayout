@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
                 .contentView(R.layout.activity_main)
                 .emptyDataView(R.layout.activity_emptydata)
                 .errorView(R.layout.activity_error)
-                .loadingView(R.layout.activity_loading)
+                .loadingView(getLoading()==0? R.layout.activity_loading : getLoading())
                 .netWorkErrorView(R.layout.activity_networkerror)
                 //设置空数据页面图片控件id
                 .emptyDataIconImageId(R.id.image)
@@ -64,6 +64,10 @@ public class MainActivity extends BaseActivity {
                     }
                 })
                 .build();
+    }
+
+    private int getLoading() {
+        return R.layout.activity_loading3;
     }
 
     @Override
