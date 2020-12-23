@@ -49,10 +49,10 @@ public class Test3Activity extends AppCompatActivity implements View.OnClickList
     private void initStatusLayout() {
         statusLayoutManager = StateLayoutManager.newBuilder(this)
                 .contentView(R.layout.activity_content)
-                .emptyDataView(R.layout.activity_emptydata)
+                .emptyDataView(R.layout.custom_empty_view)
                 .errorView(R.layout.activity_error)
                 .loadingView(R.layout.activity_loading3)
-                .netWorkErrorView(R.layout.activity_networkerror)
+                .netWorkErrorView(R.layout.custom_network_error)
                 .build();
     }
 
@@ -154,8 +154,8 @@ public class Test3Activity extends AppCompatActivity implements View.OnClickList
     private void initEmptyDataView() {
         statusLayoutManager.showEmptyData();
         LinearLayout ll_empty_data = (LinearLayout) findViewById(R.id.ll_empty_data);
-        ImageView ivImage  = findViewById(R.id.iv_image);
-        TextView tvContent = findViewById(R.id.tv_content);
+        ImageView ivImage  = findViewById(R.id.iv_empty_bg);
+        TextView tvContent = findViewById(R.id.tv_empty_name);
         ivImage.setBackgroundResource(R.drawable.icon_failed);
         tvContent.setText("自定义内容");
         ll_empty_data.setOnClickListener(new View.OnClickListener() {

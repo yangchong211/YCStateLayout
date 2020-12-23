@@ -14,19 +14,17 @@
             android:id="@+id/btn_empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="empty"/>
+            android:text="空"/>
         <Button
             android:id="@+id/btn_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="error"/>
+            android:text="数据异常"/>
         <Button
             android:id="@+id/btn_network_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="network_error"/>
-
-
+            android:text="网异常"/>
     </LinearLayout>
 
 
@@ -38,17 +36,22 @@
             android:id="@+id/btn_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试fragment1"/>
+            android:text="页面1"/>
         <Button
             android:id="@+id/btn_test2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试fragment2"/>
+            android:text="页面2"/>
         <Button
             android:id="@+id/btn_test3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试页面3"/>
+            android:text="页面3"/>
+        <Button
+            android:id="@+id/btn_test4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="页面4"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

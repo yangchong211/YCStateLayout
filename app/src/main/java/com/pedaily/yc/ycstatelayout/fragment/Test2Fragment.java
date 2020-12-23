@@ -57,10 +57,10 @@ public class Test2Fragment extends BaseStateFragment {
     protected void initStatusLayout() {
         statusLayoutManager = StateLayoutManager.newBuilder(activity,true)
                 .contentView(R.layout.base_recycler_view)
-                .emptyDataView(R.layout.activity_emptydata)
+                .emptyDataView(R.layout.custom_empty_view)
                 .errorView(R.layout.activity_error)
                 .loadingView(R.layout.activity_loading3)
-                .netWorkErrorView(R.layout.activity_networkerror)
+                .netWorkErrorView(R.layout.custom_network_error)
                 .onRetryListener(new OnRetryListener() {
                     @Override
                     public void onRetry() {

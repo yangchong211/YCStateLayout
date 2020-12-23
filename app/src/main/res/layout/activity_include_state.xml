@@ -9,10 +9,10 @@
     <!--正常时布局-->
     <include layout="@layout/activity_content"/>
     <!--加载loading布局-->
-    <include layout="@layout/activity_loading"/>
+    <include layout="@layout/custom_loading"/>
     <!--异常时布局-->
     <include layout="@layout/activity_error"/>
     <!--空数据时布局-->
-    <include layout="@layout/activity_emptydata"/>
+    <include layout="@layout/custom_empty_view"/>
 
 </LinearLayout>

@@ -14,6 +14,7 @@ import com.ns.yc.ycstatelib.StateLayoutManager;
 import com.pedaily.yc.ycstatelayout.activity.Test1Activity;
 import com.pedaily.yc.ycstatelayout.activity.Test2Activity;
 import com.pedaily.yc.ycstatelayout.activity.Test3Activity;
+import com.pedaily.yc.ycstatelayout.activity.Test4Activity;
 import com.pedaily.yc.ycstatelayout.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -37,10 +38,10 @@ public class MainActivity extends BaseActivity {
     protected void initStatusLayout() {
         statusLayoutManager = StateLayoutManager.newBuilder(this)
                 .contentView(R.layout.activity_main)
-                .emptyDataView(R.layout.activity_emptydata)
+                .emptyDataView(R.layout.custom_empty_view)
                 .errorView(R.layout.activity_error)
-                .loadingView(getLoading()==0? R.layout.activity_loading : getLoading())
-                .netWorkErrorView(R.layout.activity_networkerror)
+                .loadingView(R.layout.custom_app_loading)
+                .netWorkErrorView(R.layout.custom_network_error)
                 //设置空数据页面图片控件id
                 .emptyDataIconImageId(R.id.image)
                 //设置空数据页面文本控件id
@@ -66,10 +67,6 @@ public class MainActivity extends BaseActivity {
                 .build();
     }
 
-    private int getLoading() {
-        return R.layout.activity_loading3;
-    }
-
     @Override
     protected void initView() {
         showLoading();
@@ -85,6 +82,8 @@ public class MainActivity extends BaseActivity {
         Button btn_test = (Button) findViewById(R.id.btn_test);
         Button btn_test2 = (Button) findViewById(R.id.btn_test2);
         Button btn_test3 = (Button) findViewById(R.id.btn_test3);
+        Button btn_test4 = findViewById(R.id.btn_test4);
+
         btn_empty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,6 +118,12 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Test3Activity.class));
+            }
+        });
+        btn_test4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Test4Activity.class));
             }
         });
     }
