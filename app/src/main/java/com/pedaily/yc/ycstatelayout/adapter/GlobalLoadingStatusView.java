@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import com.pedaily.yc.ycstatelayout.R;
 
-import static com.ns.yc.ycstatelib.StateViewLayout.STATUS_EMPTY_DATA;
-import static com.ns.yc.ycstatelib.StateViewLayout.STATUS_LOADING;
-import static com.ns.yc.ycstatelib.StateViewLayout.STATUS_LOAD_FAILED;
-import static com.ns.yc.ycstatelib.StateViewLayout.STATUS_LOAD_SUCCESS;
+import static com.yc.ycstatelib.StateViewLayout.STATUS_EMPTY_DATA;
+import static com.yc.ycstatelib.StateViewLayout.STATUS_LOADING;
+import static com.yc.ycstatelib.StateViewLayout.STATUS_LOAD_FAILED;
+import static com.yc.ycstatelib.StateViewLayout.STATUS_LOAD_SUCCESS;
 import static com.pedaily.yc.ycstatelayout.adapter.Util.isNetworkConnected;
 
 @SuppressLint("ViewConstructor")

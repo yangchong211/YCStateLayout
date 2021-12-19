@@ -4,24 +4,25 @@ import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.ns.yc.ycstatelib.StateLayoutManager;
-import com.ns.yc.ycstatelib.StateViewLayout;
 import com.pedaily.yc.ycstatelayout.BuildConfig;
+import com.yc.ycstatelib.StateLayoutManager;
+import com.yc.ycstatelib.StateViewLayout;
 import com.pedaily.yc.ycstatelayout.R;
 import com.pedaily.yc.ycstatelayout.adapter.Constants;
 import com.pedaily.yc.ycstatelayout.adapter.GlobalAdapter;
@@ -84,7 +85,7 @@ public class Test3Fragment extends BaseStateFragment {
     public void initView(View view) {
         RecyclerView recyclerView = view.findViewById(R.id.recycleView);
         GridLayoutManager layoutManager = new GridLayoutManager(activity, 2);
-        layoutManager.setOrientation(OrientationHelper.VERTICAL);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

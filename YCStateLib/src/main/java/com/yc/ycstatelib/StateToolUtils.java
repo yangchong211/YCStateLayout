@@ -1,12 +1,9 @@
-package com.ns.yc.ycstatelib;
+package com.yc.ycstatelib;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
-import android.os.Build;
-import android.telephony.TelephonyManager;
 import android.util.TypedValue;
 
 /**

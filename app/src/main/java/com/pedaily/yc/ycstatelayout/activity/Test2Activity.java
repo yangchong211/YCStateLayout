@@ -1,13 +1,15 @@
 package com.pedaily.yc.ycstatelayout.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 import com.pedaily.yc.ycstatelayout.R;
 import com.pedaily.yc.ycstatelayout.base.BasePagerAdapter;
 import com.pedaily.yc.ycstatelayout.fragment.Test1Fragment;

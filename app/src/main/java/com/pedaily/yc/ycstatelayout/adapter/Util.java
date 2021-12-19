@@ -6,10 +6,7 @@ import android.net.NetworkInfo;
 
 import java.util.Locale;
 
-/**
- * @author billy.qi
- * @since 19/3/19 22:52
- */
+
 public class Util {
 
     /**

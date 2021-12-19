@@ -3,14 +3,19 @@ package com.pedaily.yc.ycstatelayout.fragment;
 import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.Toast;
 
-import com.ns.yc.ycstatelib.OnNetworkListener;
-import com.ns.yc.ycstatelib.OnRetryListener;
-import com.ns.yc.ycstatelib.StateLayoutManager;
+import com.yc.ycstatelib.OnNetworkListener;
+import com.yc.ycstatelib.OnRetryListener;
+import com.yc.ycstatelib.StateLayoutManager;
 import com.pedaily.yc.ycstatelayout.HhItemClickListener;
 import com.pedaily.yc.ycstatelayout.MainAdapter;
 import com.pedaily.yc.ycstatelayout.R;

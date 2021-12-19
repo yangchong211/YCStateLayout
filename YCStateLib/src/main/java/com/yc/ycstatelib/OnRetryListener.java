@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package com.ns.yc.ycstatelib;
+package com.yc.ycstatelib;
 
 
 /**
@@ -26,10 +26,10 @@ package com.ns.yc.ycstatelib;
  *     revise:
  * </pre>
  */
-public interface OnNetworkListener {
+public interface OnRetryListener {
 
     /**
-     * 设置网络操作
+     * 重新加载
      */
-    void onNetwork();
+    void onRetry();
 }

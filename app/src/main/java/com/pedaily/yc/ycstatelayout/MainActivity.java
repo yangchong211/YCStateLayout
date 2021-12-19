@@ -1,16 +1,17 @@
 package com.pedaily.yc.ycstatelayout;
 
 import android.content.Intent;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 
-import com.ns.yc.ycstatelib.OnNetworkListener;
-import com.ns.yc.ycstatelib.OnRetryListener;
-import com.ns.yc.ycstatelib.StateLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.yc.ycstatelib.OnNetworkListener;
+import com.yc.ycstatelib.OnRetryListener;
+import com.yc.ycstatelib.StateLayoutManager;
 import com.pedaily.yc.ycstatelayout.activity.Test1Activity;
 import com.pedaily.yc.ycstatelayout.activity.Test2Activity;
 import com.pedaily.yc.ycstatelayout.activity.Test3Activity;

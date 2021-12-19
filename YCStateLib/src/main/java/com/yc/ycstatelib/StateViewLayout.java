@@ -1,4 +1,4 @@
-package com.ns.yc.ycstatelib;
+package com.yc.ycstatelib;
 
 import android.app.Activity;
 import android.content.Context;

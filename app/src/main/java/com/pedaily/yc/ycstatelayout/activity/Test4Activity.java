@@ -1,32 +1,23 @@
 package com.pedaily.yc.ycstatelayout.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.ns.yc.ycstatelib.CommonPaddingView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.yc.ycstatelib.CommonPaddingView;
 import com.pedaily.yc.ycstatelayout.HhItemClickListener;
-import com.pedaily.yc.ycstatelayout.MainActivity;
 import com.pedaily.yc.ycstatelayout.MainAdapter;
 import com.pedaily.yc.ycstatelayout.R;
-import com.pedaily.yc.ycstatelayout.base.BasePagerAdapter;
-import com.pedaily.yc.ycstatelayout.fragment.Test1Fragment;
-import com.pedaily.yc.ycstatelayout.fragment.Test2Fragment;
-import com.pedaily.yc.ycstatelayout.fragment.Test3Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.ns.yc.ycstatelib.CommonPaddingView.LOADING;
 
 
 public class Test4Activity extends AppCompatActivity implements View.OnClickListener {

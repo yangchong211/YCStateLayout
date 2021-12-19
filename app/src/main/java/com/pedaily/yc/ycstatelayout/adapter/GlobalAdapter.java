@@ -1,9 +1,8 @@
 package com.pedaily.yc.ycstatelayout.adapter;
 
-import android.provider.SyncStateContract;
 import android.view.View;
 
-import com.ns.yc.ycstatelib.StateViewLayout;
+import com.yc.ycstatelib.StateViewLayout;
 
 
 public class GlobalAdapter implements StateViewLayout.Adapter {
