@@ -13,7 +13,7 @@
     ```
 - Then, add the library to your module build.gradle
     ```
-    implementation  'cn.yc:YCStateLib:1.2.4'
+    iimplementation 'com.github.yangchong211:YCStateLayout:1.2.5'
     ```
 
 
